@@ -37,7 +37,7 @@
       <section class="hero section">
         <div class="container hero__grid">
           <div class="hero__content">
-            <p class="eyebrow">UK-based Spanish freelance web specialist</p>
+            <p class="eyebrow">UK-based freelance web specialist</p>
             <h1>Fast, credible websites for small businesses that want to look sharper and generate more enquiries.</h1>
             <p class="hero__lede">I design and build modern websites, WordPress sites and lightweight static builds with accessibility, technical SEO and practical maintenance built in from the start.</p>
 
@@ -269,17 +269,17 @@
           <div>
             <div class="section-heading section-heading--left">
               <p class="eyebrow">About</p>
-              <h2>A Spanish front-end developer in the UK with strong WordPress experience and a good eye for design.</h2>
+              <h2>A UK-based front-end developer with strong WordPress experience and a good eye for design.</h2>
             </div>
 
             <p class="about-copy">I work with small businesses that want their website to feel sharper, faster and easier to trust. My background combines front-end development and WordPress delivery, with a practical focus on layout, accessibility, performance and technical SEO.</p>
-            <p class="about-copy">I prefer websites that feel considered rather than overworked: clear structure, strong messaging, reliable mobile behaviour and a setup that stays manageable after launch. I can work comfortably in English or Spanish depending on the client and the project.</p>
+            <p class="about-copy">I prefer websites that feel considered rather than overworked: clear structure, strong messaging, reliable mobile behaviour and a setup that stays manageable after launch. The aim is always something practical, polished and easy to maintain.</p>
           </div>
 
           <aside class="about-panel">
             <h3>What clients tend to value</h3>
             <ul class="about-list">
-              <li>Bilingual perspective for UK and Spanish-speaking contexts</li>
+              <li>Clear communication and practical guidance throughout the project</li>
               <li>Independent specialist attention from start to finish</li>
               <li>Design judgement backed by front-end discipline</li>
               <li>Accessibility and SEO treated as business value, not extras</li>
@@ -295,16 +295,58 @@
             <h2>Ready for a website that feels more credible and easier to trust?</h2>
             <p>If you are launching something new, refreshing an outdated site or need reliable ongoing support, I can help you shape the right next step.</p>
 
-            <div class="hero__actions">
-              <a class="button button--primary" href="mailto:docampowales@gmail.com">Email docampowales@gmail.com</a>
-              <a class="button button--secondary button--secondary-light" href="#work">View example work</a>
-            </div>
-          </div>
+            <div class="contact-form__status" data-fs-error role="alert"></div>
 
-          <div class="contact-panel__aside">
-            <h3>Future contact form</h3>
-            <p>This block can later be connected to a simple form service such as Formspree, Basin or Netlify Forms.</p>
-            <p class="contact-note">For now, email is the quickest way to start the conversation.</p>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xzdygglk" method="POST">
+              <input name="_subject" type="hidden" value="New enquiry from manueldocampo.com">
+
+              <div class="contact-form__field contact-form__field--hp">
+                <label for="website">Website</label>
+                <input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+              </div>
+
+              <div class="contact-form__grid">
+                <div class="contact-form__field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" autocomplete="name" data-fs-field required>
+                  <span class="contact-form__error" data-fs-error="name"></span>
+                </div>
+
+                <div class="contact-form__field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" autocomplete="email" data-fs-field required>
+                  <span class="contact-form__error" data-fs-error="email"></span>
+                </div>
+
+                <div class="contact-form__field">
+                  <label for="business">Business name</label>
+                  <input id="business" name="business" type="text" autocomplete="organization" data-fs-field>
+                </div>
+
+                <div class="contact-form__field">
+                  <label for="service">What do you need?</label>
+                  <select id="service" name="service" data-fs-field>
+                    <option value="">Select a service</option>
+                    <option value="small-business-website">Small business website</option>
+                    <option value="wordpress-website">WordPress website</option>
+                    <option value="static-website">Lightweight static website</option>
+                    <option value="seo-accessibility">SEO or accessibility improvements</option>
+                    <option value="maintenance">Ongoing maintenance</option>
+                    <option value="ai-video">AI-assisted promo video</option>
+                  </select>
+                </div>
+
+                <div class="contact-form__field contact-form__field--full">
+                  <label for="message">Project details</label>
+                  <textarea id="message" name="message" rows="6" placeholder="Tell me what you need, what stage you are at, and any deadlines or goals." data-fs-field required></textarea>
+                  <span class="contact-form__error" data-fs-error="message"></span>
+                </div>
+              </div>
+
+              <div class="contact-form__actions">
+                <button class="button button--primary" data-fs-submit-btn type="submit">Send enquiry</button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
@@ -317,5 +359,7 @@
       </div>
     </footer>
   </div>
+  <script src="script.js" defer></script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
