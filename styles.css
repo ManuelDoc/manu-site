@@ -316,6 +316,10 @@ p {
   align-items: center;
 }
 
+.hero__content h1 {
+  margin-bottom: 1rem;
+}
+
 .hero__lede,
 .section-heading p,
 .about-copy,
@@ -822,9 +826,12 @@ button:focus-visible,
 
 @media (min-width: 900px) {
   .hero__grid,
-  .about-grid,
-  .contact-panel {
+  .about-grid {
     grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  }
+
+  .contact-panel {
+    grid-template-columns: 1fr;
   }
 
   .hero__grid {
