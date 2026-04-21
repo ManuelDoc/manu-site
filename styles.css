@@ -863,7 +863,8 @@ p {
 }
 
 .not-found-card h1 {
-  max-width: 11ch;
+  max-width: 75%;
+  font-size: 2.8125rem;
 }
 
 .not-found-copy,
