@@ -27,7 +27,7 @@ if (wizardButtons.length === 3 && wizardProgress) {
       button.setAttribute("data-home-done", "true");
 
       if (index === wizardButtons.length - 1) {
-        updateProgress("Camino encontrado. Volviendo a casa...");
+        updateProgress("Path found. Heading home...");
 
         window.setTimeout(() => {
           window.location.href = "index.html";
@@ -37,7 +37,7 @@ if (wizardButtons.length === 3 && wizardProgress) {
       }
 
       currentStep += 1;
-      updateProgress(`Talón ${currentStep + 1} de 3.`);
+      updateProgress(`Heel ${currentStep + 1} of 3.`);
       enableNextStep();
     });
   });
