@@ -30,7 +30,7 @@ if (wizardButtons.length === 3 && wizardProgress) {
         updateProgress("Path found. Heading home...");
 
         window.setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = "/";
         }, 420);
 
         return;
