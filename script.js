@@ -3,6 +3,9 @@ const form = document.getElementById("contact-form");
 if (form) {
   const status = form.parentElement ? form.parentElement.querySelector("[data-fs-error]") : null;
   const submitButton = form.querySelector("[data-fs-submit-btn]");
+  const formMethod = form.getAttribute("method") || "POST";
+  const formAction = form.getAttribute("action") || "";
+  const successUrl = new URL(form.dataset.successUrl || "thank-you.html", window.location.href).href;
   const turnstileContainer = form.querySelector("[data-turnstile-container]");
   const turnstileSitekey = turnstileContainer ? turnstileContainer.dataset.sitekey : "";
   const turnstileTheme = turnstileContainer ? turnstileContainer.dataset.theme || "dark" : "dark";
@@ -63,9 +66,36 @@ if (form) {
     updateStatus("Verification expired. Please wait a moment and try again.");
     setSubmitState(false, defaultButtonLabel);
 
+    resetTurnstile();
+  };
+
+  const resetTurnstile = () => {
     if (window.turnstile && turnstileWidgetId !== null) {
       window.turnstile.reset(turnstileWidgetId);
     }
+  };
+
+  const getSubmissionErrorMessage = async (response) => {
+    const contentType = response.headers.get("content-type") || "";
+
+    if (!contentType.includes("application/json")) {
+      return "The message could not be sent. Please try again.";
+    }
+
+    try {
+      const payload = await response.json();
+
+      if (payload && Array.isArray(payload.errors) && payload.errors.length > 0) {
+        return payload.errors
+          .map((entry) => entry.message)
+          .filter(Boolean)
+          .join(" ");
+      }
+    } catch (error) {
+      console.error("Formspree error payload could not be parsed", error);
+    }
+
+    return "The message could not be sent. Please try again.";
   };
 
   const loadTurnstileScript = () => {
@@ -135,9 +165,10 @@ if (form) {
   form.addEventListener("focusin", startTurnstile, { once: true });
   form.addEventListener("pointerdown", startTurnstile, { once: true });
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
     if (!getTurnstileResponse()) {
-      event.preventDefault();
       startTurnstile();
       updateStatus("Spam protection is still loading. Please wait a moment and submit again.");
       setSubmitState(false, "Verifying...");
@@ -147,5 +178,29 @@ if (form) {
     updateStatus("");
     form.setAttribute("aria-busy", "true");
     setSubmitState(false, "Sending...");
+
+    try {
+      const response = await fetch(formAction, {
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+        method: formMethod,
+      });
+
+      if (!response.ok) {
+        const errorMessage = await getSubmissionErrorMessage(response);
+
+        throw new Error(errorMessage);
+      }
+
+      window.location.assign(successUrl);
+    } catch (error) {
+      console.error("Form submission error", error);
+      resetTurnstile();
+      updateStatus(error instanceof Error ? error.message : "The message could not be sent. Please try again.");
+      form.removeAttribute("aria-busy");
+      setSubmitState(false, "Verifying...");
+    }
   });
 }
