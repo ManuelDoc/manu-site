@@ -732,6 +732,10 @@ p {
   overflow: hidden;
 }
 
+.contact-form__captcha {
+  margin-top: 1.25rem;
+}
+
 .contact-form__actions {
   display: flex;
   flex-wrap: wrap;
