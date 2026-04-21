@@ -1,38 +1,92 @@
-const focusFormStatus = ({ form }, error) => {
-  if (error) {
-    console.error("Formspree submission error", error);
-  }
+const form = document.getElementById("contact-form");
 
-  const parent = form.parentElement;
-  const status = parent ? parent.querySelector("[data-fs-error]") : null;
+if (form) {
+  const status = form.parentElement ? form.parentElement.querySelector("[data-fs-error]") : null;
+  const submitButton = form.querySelector("[data-fs-submit-btn]");
+  const defaultButtonLabel = submitButton ? submitButton.textContent : "";
 
-  if (!status) {
-    return;
-  }
+  const updateStatus = (message) => {
+    if (!status) {
+      return;
+    }
 
-  window.requestAnimationFrame(() => {
-    status.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
+    if (!message) {
+      status.removeAttribute("data-fs-active");
+      status.textContent = "";
+      return;
+    }
+
+    status.textContent = message;
+    status.setAttribute("data-fs-active", "");
+
+    window.requestAnimationFrame(() => {
+      status.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     });
-  });
-};
-
-window.formspree =
-  window.formspree ||
-  function () {
-    (window.formspree.q = window.formspree.q || []).push(arguments);
   };
 
-window.formspree("initForm", {
-  formElement: "#contact-form",
-  formId: "xzdygglk",
-  data: {
-    source: "website-contact-form",
-  },
-  onError: focusFormStatus,
-  onFailure: focusFormStatus,
-  renderSuccess: () => {
-    window.location.assign("thank-you.html");
-  },
-});
+  const setSubmitState = (isEnabled, label) => {
+    if (!submitButton) {
+      return;
+    }
+
+    submitButton.disabled = !isEnabled;
+    submitButton.textContent = label || defaultButtonLabel;
+  };
+
+  const getTurnstileResponse = () => {
+    const responseField = form.querySelector('[name="cf-turnstile-response"]');
+
+    return responseField ? responseField.value.trim() : "";
+  };
+
+  const syncSubmitStateWithToken = () => {
+    if (getTurnstileResponse()) {
+      updateStatus("");
+      setSubmitState(true, defaultButtonLabel);
+      return true;
+    }
+
+    return false;
+  };
+
+  setSubmitState(false, "Verifying...");
+
+  const tokenObserver = window.setInterval(() => {
+    if (syncSubmitStateWithToken()) {
+      window.clearInterval(tokenObserver);
+    }
+  }, 400);
+
+  window.onTurnstileSuccess = () => {
+    updateStatus("");
+    setSubmitState(true, defaultButtonLabel);
+    window.clearInterval(tokenObserver);
+  };
+
+  window.onTurnstileError = (errorCode) => {
+    console.error("Turnstile error", errorCode);
+    updateStatus("Verification failed. Refresh the page and try again.");
+    setSubmitState(false, defaultButtonLabel);
+  };
+
+  window.onTurnstileExpired = () => {
+    updateStatus("Verification expired. Please wait a moment and try again.");
+    setSubmitState(false, defaultButtonLabel);
+  };
+
+  form.addEventListener("submit", (event) => {
+    if (!getTurnstileResponse()) {
+      event.preventDefault();
+      updateStatus("Verification is still loading. Please wait a moment and submit again.");
+      setSubmitState(false, defaultButtonLabel);
+      return;
+    }
+
+    updateStatus("");
+    form.setAttribute("aria-busy", "true");
+    setSubmitState(false, "Sending...");
+  });
+}
