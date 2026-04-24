@@ -136,7 +136,7 @@ ol {
   color: var(--color-coral);
   font-size: 0.84rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -147,16 +147,16 @@ h3 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 h1 {
-  max-width: 12ch;
-  font-size: clamp(2.9rem, 7vw, 5.8rem);
+  max-width: 15ch;
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
 }
 
 h2 {
-  max-width: 14ch;
+  max-width: 16ch;
   font-size: clamp(2.1rem, 4.6vw, 3.5rem);
 }
 
@@ -214,7 +214,7 @@ p {
 .brand__name {
   font-size: 1rem;
   font-weight: 800;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -313,6 +313,7 @@ p {
 .hero__grid {
   display: grid;
   gap: 2rem;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
 }
 
@@ -320,10 +321,31 @@ p {
   margin-bottom: 1rem;
 }
 
+.hero__content,
+.hero__panel,
+.section-heading,
+.spotlight-card,
+.mini-card,
+.final-cta,
+.maintenance-card,
+.pricing-card,
+.service-card,
+.value-card,
+.portfolio-card,
+.process-card,
+.about-panel,
+.contact-panel {
+  min-width: 0;
+}
+
 .hero__lede,
 .section-heading p,
 .about-copy,
 .contact-panel p,
+.final-cta p,
+.maintenance-card p,
+.pricing-card p,
+.pricing-note,
 .service-card p,
 .value-card p,
 .portfolio-card p,
@@ -391,10 +413,14 @@ p {
 .hero__panel {
   display: grid;
   gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .spotlight-card,
 .mini-card,
+.final-cta,
+.maintenance-card,
+.pricing-card,
 .service-card,
 .value-card,
 .portfolio-card,
@@ -424,12 +450,12 @@ p {
   background: rgba(244, 111, 82, 0.12);
 }
 
-.spotlight-card__label {
+.spotlight-card .spotlight-card__label {
   margin-bottom: 0.8rem;
   color: var(--color-coral);
   font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -442,6 +468,7 @@ p {
 .hero__support-cards {
   display: grid;
   gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .mini-card {
@@ -449,12 +476,12 @@ p {
   background: rgba(255, 255, 255, 0.85);
 }
 
-.mini-card__title {
+.mini-card .mini-card__title {
   margin-bottom: 0.45rem;
   color: var(--color-text);
   font-size: 0.84rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -474,6 +501,7 @@ p {
 .card-grid {
   display: grid;
   gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .service-card,
@@ -489,12 +517,76 @@ p {
     border-color 0.2s ease;
 }
 
+.pricing-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.88);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.pricing-card--featured {
+  border-color: rgba(244, 111, 82, 0.32);
+  background:
+    linear-gradient(180deg, rgba(255, 246, 236, 0.98), rgba(255, 255, 255, 0.92)),
+    rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-card .pricing-card__badge {
+  align-self: flex-start;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(145, 169, 111, 0.18);
+  color: #425a35;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.pricing-card__header {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pricing-card .pricing-card__price {
+  color: var(--color-charcoal);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pricing-note {
+  max-width: 58rem;
+  margin-top: 1.4rem;
+  font-size: 0.98rem;
+}
+
+.pricing-card__header h3 {
+  margin-bottom: 0;
+}
+
 .service-card:hover,
 .service-card:focus-within,
 .value-card:hover,
 .value-card:focus-within,
 .portfolio-card:hover,
 .portfolio-card:focus-within,
+.pricing-card:hover,
+.pricing-card:focus-within,
 .process-card:hover,
 .process-card:focus-within {
   transform: translateY(-4px);
@@ -506,6 +598,8 @@ p {
 .value-card h3,
 .portfolio-card h3,
 .process-card h3,
+.maintenance-card h3,
+.pricing-card h3,
 .about-panel h3,
 .contact-panel h3 {
   margin-bottom: 0.7rem;
@@ -541,11 +635,37 @@ p {
   background: linear-gradient(135deg, var(--color-coral), var(--color-mango));
 }
 
+.maintenance-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+}
+
+.maintenance-card {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.maintenance-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+
+.maintenance-list li {
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(48, 37, 33, 0.1);
+  border-radius: 1rem;
+  background: rgba(255, 249, 241, 0.8);
+}
+
 .service-card--accent {
   background: linear-gradient(180deg, rgba(255, 236, 214, 0.95), rgba(255, 255, 255, 0.92));
 }
 
-.service-card__badge {
+.service-card .service-card__badge {
   display: inline-flex;
   margin-bottom: 0.9rem;
   padding: 0.38rem 0.7rem;
@@ -554,13 +674,14 @@ p {
   color: #4e6540;
   font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .process-list {
   display: grid;
   gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
   list-style: none;
 }
 
@@ -574,15 +695,15 @@ p {
   color: var(--color-coral);
   font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
 }
 
-.portfolio-card__tag {
+.portfolio-card .portfolio-card__tag {
   margin-bottom: 0.8rem;
   color: var(--color-coral);
   font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -605,6 +726,7 @@ p {
 .about-grid {
   display: grid;
   gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .about-copy + .about-copy {
@@ -616,9 +738,25 @@ p {
   background: rgba(255, 255, 255, 0.88);
 }
 
+.final-cta {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background:
+    linear-gradient(135deg, rgba(255, 232, 163, 0.42), rgba(255, 255, 255, 0.9)),
+    rgba(255, 255, 255, 0.86);
+}
+
+.final-cta h2 {
+  margin-bottom: 0.9rem;
+}
+
 .contact-panel {
   display: grid;
   gap: 1.5rem;
+  grid-template-columns: minmax(0, 1fr);
   padding: clamp(1.5rem, 3vw, 2.5rem);
   border-radius: 2rem;
   background:
@@ -667,6 +805,7 @@ p {
 .contact-form__grid {
   display: grid;
   gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .contact-form__field {
@@ -859,7 +998,7 @@ p {
   font-size: clamp(4rem, 12vw, 7rem);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .not-found-card h1 {
@@ -997,7 +1136,8 @@ button:focus-visible,
 
 @media (min-width: 900px) {
   .hero__grid,
-  .about-grid {
+  .about-grid,
+  .maintenance-grid {
     grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
   }
 
@@ -1005,11 +1145,19 @@ button:focus-visible,
     grid-template-columns: 1fr;
   }
 
+  .final-cta {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
   .hero__grid {
     gap: 3rem;
   }
 
   .card-grid--services {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pricing-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
@@ -1035,6 +1183,17 @@ button:focus-visible,
 }
 
 @media (max-width: 719px) {
+  .container {
+    width: min(1120px, calc(100% - 2rem));
+  }
+
+  .hero__lede,
+  .hero__list li,
+  .spotlight-card p,
+  .mini-card p {
+    max-width: 34ch;
+  }
+
   .site-nav {
     width: 100%;
     justify-content: flex-start;
