@@ -1243,7 +1243,6 @@ button:focus-visible,
 }
 
 @media (min-width: 900px) {
-  .hero__grid,
   .about-grid,
   .maintenance-grid {
     grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
@@ -1255,10 +1254,6 @@ button:focus-visible,
 
   .final-cta {
     grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .hero__grid {
-    gap: 3rem;
   }
 
   .card-grid--services {
