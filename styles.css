@@ -578,6 +578,50 @@ p {
   box-shadow: var(--shadow-sm);
 }
 
+.pricing-card,
+.maintenance-card,
+.service-card,
+.portfolio-card,
+.about-panel,
+.final-cta,
+.contact-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.pricing-card > *,
+.maintenance-card > *,
+.service-card > *,
+.portfolio-card > *,
+.about-panel > *,
+.final-cta > *,
+.contact-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pricing-card::after,
+.maintenance-card::after,
+.service-card::after,
+.portfolio-card::after,
+.about-panel::after,
+.final-cta::after,
+.contact-panel::after {
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  content: "";
+  background: linear-gradient(105deg, transparent 0 34%, rgba(141, 245, 228, 0.16) 47%, transparent 62%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-125%);
+}
+
+.scroll-reveal.is-revealed::after {
+  animation: reveal-sheen 1s ease-out 0.08s both;
+}
+
 .spotlight-card {
   position: relative;
   overflow: hidden;
@@ -1314,6 +1358,22 @@ button:focus-visible,
 .button:focus-visible {
   outline: 3px solid rgba(45, 212, 191, 0.5);
   outline-offset: 4px;
+}
+
+@keyframes reveal-sheen {
+  0% {
+    opacity: 0;
+    transform: translateX(-125%);
+  }
+
+  28% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(125%);
+  }
 }
 
 @media (min-width: 720px) {
