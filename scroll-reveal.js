@@ -20,13 +20,11 @@
   const revealTargets = Array.from(document.querySelectorAll(revealSelector));
   const motionQuery = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
 
-  if (!revealTargets.length || !motionQuery || motionQuery.matches || !window.gsap || !("IntersectionObserver" in window)) {
+  if (!revealTargets.length || !window.gsap || !motionQuery) {
     return;
   }
 
   const revealTargetSet = new Set(revealTargets);
-  const narrowViewportQuery = window.matchMedia("(max-width: 719px)");
-  let observer;
 
   const getGroupIndex = (target) => {
     if (!target.parentElement) {
@@ -46,11 +44,11 @@
 
     const gridColumns = window.getComputedStyle(target.parentElement).gridTemplateColumns;
 
-    return gridColumns ? gridColumns.split(" ").filter(Boolean).length : 1;
+    return gridColumns && gridColumns !== "none" ? gridColumns.split(" ").filter(Boolean).length : 1;
   };
 
-  const getHorizontalOffset = (target, index) => {
-    if (narrowViewportQuery.matches || !target.matches(sideRevealSelector)) {
+  const getHorizontalOffset = (target, index, isDesktop) => {
+    if (!isDesktop || !target.matches(sideRevealSelector)) {
       return 0;
     }
 
@@ -70,84 +68,126 @@
     return (column - middleColumn) * 46;
   };
 
-  const getRevealVars = (target) => {
+  const getRevealVars = (target, isDesktop) => {
     const index = getGroupIndex(target);
-    const x = getHorizontalOffset(target, index);
+    const x = getHorizontalOffset(target, index, isDesktop);
+    const isGroupedCard = target.matches(".pricing-card, .service-card, .portfolio-card");
+    const groupSize = isDesktop ? 3 : 2;
+    const staggerStep = isDesktop ? 0.08 : 0.04;
 
     return {
-      delay: target.matches(".pricing-card, .service-card, .portfolio-card") ? Math.min(index % 3, 2) * 0.08 : 0,
+      delay: isGroupedCard ? (index % groupSize) * staggerStep : 0,
+      duration: isDesktop ? 0.82 : 0.58,
+      scale: isDesktop ? 0.985 : 0.992,
       x,
-      y: x ? 22 : 34,
+      y: x ? 22 : isDesktop ? 34 : 18,
     };
   };
 
-  const revealTarget = (target) => {
-    const { delay } = getRevealVars(target);
+  const setRevealState = (target, isRevealed) => {
+    target.classList.toggle("is-revealed", isRevealed);
+  };
 
-    target.classList.add("is-revealed");
-    window.gsap.to(target, {
+  const createFallbackReveal = () => {
+    if (!("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        window.gsap.to(entry.target, {
+          autoAlpha: entry.isIntersecting ? 1 : 0,
+          duration: entry.isIntersecting ? 0.58 : 0.32,
+          ease: "power2.out",
+          scale: entry.isIntersecting ? 1 : 0.992,
+          y: entry.isIntersecting ? 0 : 18,
+        });
+
+        setRevealState(entry.target, entry.isIntersecting);
+      });
+    }, {
+      rootMargin: "0px 0px -14% 0px",
+      threshold: 0.14,
+    });
+
+    revealTargets.forEach((target) => {
+      target.classList.add("scroll-reveal");
+      window.gsap.set(target, {
+        autoAlpha: 0,
+        scale: 0.992,
+        y: 18,
+      });
+      observer.observe(target);
+    });
+  };
+
+  const createScrollTriggerReveal = (target, isDesktop) => {
+    const { delay, duration, scale, x, y } = getRevealVars(target, isDesktop);
+
+    target.classList.add("scroll-reveal");
+
+    return window.gsap.fromTo(target, {
+      autoAlpha: 0,
+      scale,
+      x,
+      y,
+    }, {
       autoAlpha: 1,
-      clearProps: "opacity,visibility,transform,willChange",
       delay,
-      duration: 0.82,
+      duration,
       ease: "power3.out",
+      onComplete: () => setRevealState(target, true),
+      onReverseComplete: () => setRevealState(target, false),
+      onStart: () => setRevealState(target, true),
+      overwrite: "auto",
+      paused: true,
       scale: 1,
       x: 0,
       y: 0,
+      scrollTrigger: {
+        end: isDesktop ? "bottom 18%" : "bottom 10%",
+        invalidateOnRefresh: true,
+        start: isDesktop ? "top 82%" : "top 88%",
+        toggleActions: "play reverse play reverse",
+        trigger: target,
+      },
     });
   };
 
-  const revealAll = () => {
-    if (observer) {
-      observer.disconnect();
-    }
-
+  const resetRevealState = () => {
     revealTargets.forEach((target) => {
-      target.classList.add("is-revealed");
-      window.gsap.killTweensOf(target);
+      setRevealState(target, false);
       window.gsap.set(target, {
-        clearProps: "opacity,visibility,transform,willChange",
+        clearProps: "opacity,visibility,transform",
       });
     });
   };
 
-  revealTargets.forEach((target) => {
-    const { x, y } = getRevealVars(target);
-
-    target.classList.add("scroll-reveal");
-    window.gsap.set(target, {
-      autoAlpha: 0,
-      scale: 0.985,
-      willChange: "transform, opacity",
-      x,
-      y,
-    });
-  });
-
-  observer = new IntersectionObserver((entries) => {
-    entries
-      .filter((entry) => entry.isIntersecting)
-      .forEach((entry) => {
-        revealTarget(entry.target);
-        observer.unobserve(entry.target);
-      });
-  }, {
-    rootMargin: "0px 0px -12% 0px",
-    threshold: 0.16,
-  });
-
-  revealTargets.forEach((target) => observer.observe(target));
-
-  const handleMotionChange = (event) => {
-    if (event.matches) {
-      revealAll();
+  if (!window.ScrollTrigger || !window.gsap.matchMedia) {
+    if (!motionQuery.matches) {
+      createFallbackReveal();
     }
-  };
 
-  if (motionQuery.addEventListener) {
-    motionQuery.addEventListener("change", handleMotionChange);
     return;
   }
 
-  motionQuery.addListener(handleMotionChange);
+  window.gsap.registerPlugin(window.ScrollTrigger);
+  window.ScrollTrigger.saveStyles(revealTargets);
+
+  const media = window.gsap.matchMedia();
+
+  media.add({
+    isDesktop: "(min-width: 720px)",
+    isMobile: "(max-width: 719px)",
+    reduceMotion: "(prefers-reduced-motion: reduce)",
+  }, (context) => {
+    const { isDesktop, reduceMotion } = context.conditions;
+
+    if (reduceMotion) {
+      resetRevealState();
+      return;
+    }
+
+    revealTargets.forEach((target) => createScrollTriggerReveal(target, isDesktop));
+  });
 })();
