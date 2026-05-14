@@ -13,15 +13,21 @@
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div class="page-shell">
-    <header class="site-header" id="top">
+    <header class="site-header mobile-header" id="top" data-mobile-header>
       <div class="container site-header__inner">
         <a class="brand" href="#top" aria-label="Manuel Docampo home">
-          <span class="brand__mark" aria-hidden="true">M</span>
+          <span class="brand__mark mobile-header__logo" aria-hidden="true">M</span>
           <span class="brand__text">
             <span class="brand__name">Manuel Docampo</span>
             <span class="brand__role">Small business websites and support</span>
           </span>
         </a>
+
+        <a class="button button--primary mobile-header__cta" href="#contact">Start your project</a>
+
+        <button class="mobile-header__menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
+          <span class="mobile-header__menu-icon" aria-hidden="true"></span>
+        </button>
 
         <nav class="site-nav" aria-label="Primary">
           <a href="#packages">Packages</a>
@@ -33,6 +39,26 @@
         </nav>
       </div>
     </header>
+
+    <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation menu" aria-hidden="true" hidden data-mobile-menu>
+      <div class="mobile-menu-overlay__top">
+        <button class="mobile-menu-overlay__close" type="button" aria-label="Close navigation menu" data-mobile-menu-close>
+          <span class="mobile-menu-overlay__close-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu-overlay__nav" aria-label="Mobile navigation">
+        <ul class="mobile-menu-overlay__list">
+          <li><a class="mobile-menu-overlay__link" href="#packages">Packages</a></li>
+          <li><a class="mobile-menu-overlay__link" href="#hosting">Hosting</a></li>
+          <li><a class="mobile-menu-overlay__link" href="#services">Services</a></li>
+          <li><a class="mobile-menu-overlay__link" href="#work">Examples</a></li>
+          <li><a class="mobile-menu-overlay__link" href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <a class="button button--primary mobile-menu-overlay__cta" href="#contact">Start your project</a>
+    </div>
 
     <main id="main-content">
       <section class="hero section" aria-labelledby="hero-title">
