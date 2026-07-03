@@ -387,7 +387,6 @@ p {
 .pricing-card,
 .service-card,
 .value-card,
-.portfolio-card,
 .process-card,
 .about-panel,
 .contact-panel {
@@ -404,7 +403,6 @@ p {
 .pricing-note,
 .service-card p,
 .value-card p,
-.portfolio-card p,
 .process-card p,
 .mini-card p,
 .spotlight-card p {
@@ -568,7 +566,6 @@ p {
 .pricing-card,
 .service-card,
 .value-card,
-.portfolio-card,
 .process-card,
 .about-panel {
   border: 1px solid var(--color-border);
@@ -579,7 +576,6 @@ p {
 .pricing-card,
 .maintenance-card,
 .service-card,
-.portfolio-card,
 .about-panel,
 .final-cta,
 .contact-panel {
@@ -591,7 +587,6 @@ p {
 .pricing-card > *,
 .maintenance-card > *,
 .service-card > *,
-.portfolio-card > *,
 .about-panel > *,
 .final-cta > *,
 .contact-panel > * {
@@ -602,7 +597,6 @@ p {
 .pricing-card::after,
 .maintenance-card::after,
 .service-card::after,
-.portfolio-card::after,
 .about-panel::after,
 .final-cta::after,
 .contact-panel::after {
@@ -709,7 +703,6 @@ p {
 
 .service-card,
 .value-card,
-.portfolio-card,
 .process-card {
   height: 100%;
   padding: 1.5rem;
@@ -786,8 +779,6 @@ p {
 .service-card:focus-within,
 .value-card:hover,
 .value-card:focus-within,
-.portfolio-card:hover,
-.portfolio-card:focus-within,
 .pricing-card:hover,
 .pricing-card:focus-within,
 .process-card:hover,
@@ -799,7 +790,6 @@ p {
 
 .service-card h3,
 .value-card h3,
-.portfolio-card h3,
 .process-card h3,
 .maintenance-card h3,
 .pricing-card h3,
@@ -809,8 +799,7 @@ p {
 }
 
 .card-list,
-.about-list,
-.tag-list {
+.about-list {
   display: grid;
   gap: 0.7rem;
   list-style: none;
@@ -901,31 +890,6 @@ p {
   font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0;
-}
-
-.portfolio-card .portfolio-card__tag {
-  margin-bottom: 0.8rem;
-  color: var(--color-coral);
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 1rem;
-}
-
-.tag-list li {
-  padding: 0.45rem 0.7rem;
-  border-radius: 999px;
-  background: rgba(45, 212, 191, 0.11);
-  color: rgba(244, 247, 251, 0.88);
-  font-size: 0.84rem;
-  font-weight: 700;
 }
 
 .about-grid {
@@ -1394,8 +1358,7 @@ button:focus-visible,
 
   .card-grid--services,
   .card-grid--values,
-  .process-list,
-  .card-grid--portfolio {
+  .process-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1432,10 +1395,6 @@ button:focus-visible,
 
   .process-list {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .card-grid--portfolio {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .contact-form__grid {

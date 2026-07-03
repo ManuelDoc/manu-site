@@ -4,7 +4,6 @@
     ".pricing-card",
     ".maintenance-card",
     ".service-card",
-    ".portfolio-card",
     ".about-copy",
     ".about-panel",
     ".final-cta",
