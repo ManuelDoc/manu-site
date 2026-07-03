@@ -566,6 +566,177 @@ img.brand__mark {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.orchestra {
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 14%, rgba(45, 212, 191, 0.1), transparent 26rem),
+    radial-gradient(circle at 14% 84%, rgba(56, 189, 248, 0.08), transparent 24rem);
+}
+
+.orchestra__layout {
+  display: grid;
+  gap: clamp(2.4rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+
+.orchestra__steps {
+  display: grid;
+  gap: 1.4rem;
+  max-width: 46rem;
+  list-style: none;
+}
+
+.orchestra__step p {
+  max-width: 54ch;
+  color: var(--color-muted);
+}
+
+.orchestra__step-kicker {
+  margin-bottom: 0.35rem;
+  color: var(--color-coral);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.orchestra__step--claim p {
+  max-width: 34ch;
+  color: var(--color-text);
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.orchestra__stage {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.orchestra__lines {
+  display: none;
+}
+
+.orchestra__line {
+  stroke: rgba(45, 212, 191, 0.35);
+  stroke-width: 0.35;
+}
+
+.orchestra__ring {
+  fill: none;
+  stroke: rgba(56, 189, 248, 0.3);
+  stroke-width: 0.3;
+  opacity: 0;
+}
+
+.orchestra__pulse {
+  fill: var(--color-yellow);
+  opacity: 0;
+}
+
+.orchestra__conductor {
+  display: grid;
+  gap: 0.2rem;
+  justify-items: center;
+  padding: 1.1rem 1.4rem;
+  border: 1px solid rgba(45, 212, 191, 0.42);
+  border-radius: var(--radius-md);
+  background: linear-gradient(145deg, rgba(18, 34, 57, 0.92), rgba(8, 17, 31, 0.94));
+  text-align: center;
+  box-shadow:
+    0 0 0 1px rgba(45, 212, 191, 0.08),
+    0 18px 42px rgba(45, 212, 191, 0.16);
+}
+
+.orchestra__conductor-name {
+  font-size: 1.15rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.orchestra__conductor-role {
+  color: var(--color-muted);
+  font-size: 0.88rem;
+}
+
+.orchestra__agents {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+}
+
+.orchestra__agent {
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.orchestra__agent-bot {
+  width: 2.6rem;
+  height: 2.6rem;
+  animation: bot-bob 3.2s ease-in-out infinite;
+  animation-delay: var(--bot-delay, 0s);
+}
+
+.orchestra__bot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bot-blink 4.6s ease-in-out infinite;
+  animation-delay: calc(var(--bot-delay, 0s) + 0.6s);
+}
+
+.orchestra__bot-tool {
+  transform-box: fill-box;
+  transform-origin: 30% 70%;
+  animation: bot-work 2.1s ease-in-out infinite;
+  animation-delay: var(--bot-delay, 0s);
+}
+
+.orchestra__bot-gear {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bot-spin 7s linear infinite;
+}
+
+.orchestra__agent:nth-child(2) {
+  --bot-delay: 0.4s;
+}
+
+.orchestra__agent:nth-child(3) {
+  --bot-delay: 0.8s;
+}
+
+.orchestra__agent:nth-child(4) {
+  --bot-delay: 1.2s;
+}
+
+.orchestra__agent:nth-child(5) {
+  --bot-delay: 1.6s;
+}
+
+.orchestra__agent:nth-child(6) {
+  --bot-delay: 2s;
+}
+
+.orchestra__agent-name {
+  font-size: 0.98rem;
+  font-weight: 800;
+}
+
+.orchestra__agent-role {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
 .spotlight-card,
 .mini-card,
 .final-cta,
@@ -1358,6 +1529,50 @@ button:focus-visible,
   }
 }
 
+@keyframes bot-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6%);
+  }
+}
+
+@keyframes bot-blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  93% {
+    transform: scaleY(0.15);
+  }
+
+  96% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bot-work {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes bot-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (min-width: 720px) {
   .section {
     padding: 5.5rem 0;
@@ -1410,6 +1625,104 @@ button:focus-visible,
 
   .contact-form__field--full {
     grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 992px) {
+  .orchestra__layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .orchestra__stage {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    width: min(100%, 34rem);
+    margin-left: auto;
+  }
+
+  .orchestra__lines {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .orchestra__conductor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    max-width: 11rem;
+    /* translate (not transform) so GSAP/scroll-reveal transforms compose with the centring */
+    translate: -50% -50%;
+  }
+
+  .orchestra__agents {
+    position: absolute;
+    inset: 0;
+  }
+
+  .orchestra__agent {
+    position: absolute;
+    width: 10.5rem;
+    padding: 0.85rem 0.95rem;
+    translate: -50% -50%;
+  }
+
+  .orchestra__agent-role {
+    font-size: 0.78rem;
+  }
+
+  /* Node coordinates match the SVG line endpoints in index.html */
+  .orchestra__agent--design {
+    top: 10%;
+    left: 50%;
+  }
+
+  .orchestra__agent--build {
+    top: 30%;
+    left: 84%;
+  }
+
+  .orchestra__agent--content {
+    top: 70%;
+    left: 84%;
+  }
+
+  .orchestra__agent--qa {
+    top: 90%;
+    left: 50%;
+  }
+
+  .orchestra__agent--hosting {
+    top: 70%;
+    left: 16%;
+  }
+
+  .orchestra__agent--support {
+    top: 30%;
+    left: 16%;
+  }
+
+  .orchestra--enhanced .orchestra__pin {
+    display: grid;
+    align-items: center;
+    min-height: 100svh;
+    padding-top: 5.5rem;
+  }
+
+  .orchestra--enhanced .orchestra__steps {
+    position: relative;
+    min-height: 13rem;
+  }
+
+  .orchestra--enhanced .orchestra__step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
 }
 

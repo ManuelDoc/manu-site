@@ -1,6 +1,9 @@
 (() => {
   const revealSelector = [
     ".section-heading",
+    ".orchestra__conductor",
+    ".orchestra__agent",
+    ".orchestra__step",
     ".pricing-card",
     ".maintenance-card",
     ".service-card",
