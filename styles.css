@@ -217,6 +217,13 @@ p {
   box-shadow: 0 16px 34px rgba(45, 212, 191, 0.24);
 }
 
+img.brand__mark {
+  display: block;
+  padding: 0.12rem;
+  background: transparent;
+  object-fit: contain;
+}
+
 .brand__text {
   display: grid;
   gap: 0.15rem;
