@@ -6,6 +6,10 @@
   <title>Manuel Docampo | Freelance Web Developer for Small Businesses</title>
   <meta name="description" content="Freelance web developer helping small businesses get online with professional websites, hosting, maintenance and practical support from start to finish.">
   <meta name="theme-color" content="#08111f">
+  <link rel="canonical" href="https://www.manueldocampo.com/">
+  <link rel="alternate" hreflang="en" href="https://www.manueldocampo.com/">
+  <link rel="alternate" hreflang="es" href="https://www.manueldocampo.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://www.manueldocampo.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -34,6 +38,7 @@
           <a href="#hosting">Hosting</a>
           <a href="#services">Services</a>
           <a href="#about">About</a>
+          <a class="lang-switch" href="/es/" lang="es" hreflang="es" aria-label="Ver esta página en español">ES</a>
           <a class="button button--small button--primary" href="#contact">Start your project</a>
         </nav>
       </div>
@@ -87,6 +92,18 @@
                 <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
               </svg>
               <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu-overlay__link" href="/es/" lang="es" hreflang="es">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3.6 9h16.8"></path>
+                <path d="M3.6 15h16.8"></path>
+                <path d="M12 3a14.5 14.5 0 0 1 0 18"></path>
+                <path d="M12 3a14.5 14.5 0 0 0 0 18"></path>
+              </svg>
+              <span>Español</span>
             </a>
           </li>
         </ul>
@@ -434,5 +451,6 @@
   <script src="hero.js" defer></script>
   <script src="scroll-reveal.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="lang-suggest.js" defer></script>
 </body>
 </html>

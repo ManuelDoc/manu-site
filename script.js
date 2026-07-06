@@ -1,3 +1,27 @@
+// UI strings follow the page language (EN default, ES for /es/ pages).
+const IS_SPANISH = (document.documentElement.lang || "").toLowerCase().startsWith("es");
+const UI_TEXT = IS_SPANISH
+  ? {
+      closeMenu: "Cerrar menú de navegación",
+      openMenu: "Abrir menú de navegación",
+      sendFailed: "No se ha podido enviar el mensaje. Inténtalo de nuevo.",
+      sending: "Enviando...",
+      spamLoading: "La protección antispam se está cargando. Espera un momento y vuelve a enviarlo.",
+      spamNotVerified: "No se ha podido verificar la protección antispam. Recarga la página e inténtalo de nuevo.",
+      verificationExpired: "La verificación ha caducado. Espera un momento e inténtalo de nuevo.",
+      verifying: "Verificando...",
+    }
+  : {
+      closeMenu: "Close navigation menu",
+      openMenu: "Open navigation menu",
+      sendFailed: "The message could not be sent. Please try again.",
+      sending: "Sending...",
+      spamLoading: "Spam protection is still loading. Please wait a moment and submit again.",
+      spamNotVerified: "Spam protection could not be verified. Refresh the page and try again.",
+      verificationExpired: "Verification expired. Please wait a moment and try again.",
+      verifying: "Verifying...",
+    };
+
 const mobileHeader = document.querySelector("[data-mobile-header]");
 
 if (mobileHeader) {
@@ -74,7 +98,7 @@ if (mobileHeader) {
 
       mobileMenu.classList.remove("is-open");
       mobileMenuOpenButton.setAttribute("aria-expanded", "false");
-      mobileMenuOpenButton.setAttribute("aria-label", "Open navigation menu");
+      mobileMenuOpenButton.setAttribute("aria-label", UI_TEXT.openMenu);
       unlockPageScroll();
       window.clearTimeout(hideMenuTimer);
       mobileMenu.removeEventListener("transitionend", hideMobileMenu);
@@ -98,7 +122,7 @@ if (mobileHeader) {
       mobileMenu.hidden = false;
       mobileMenu.setAttribute("aria-hidden", "false");
       mobileMenuOpenButton.setAttribute("aria-expanded", "true");
-      mobileMenuOpenButton.setAttribute("aria-label", "Close navigation menu");
+      mobileMenuOpenButton.setAttribute("aria-label", UI_TEXT.closeMenu);
       lockPageScroll();
 
       mobileMenu.getBoundingClientRect();
@@ -227,12 +251,12 @@ if (form) {
 
   const handleTurnstileError = (error) => {
     console.error("Turnstile error", error);
-    updateStatus("Spam protection could not be verified. Refresh the page and try again.");
+    updateStatus(UI_TEXT.spamNotVerified);
     setSubmitState(false, defaultButtonLabel);
   };
 
   const handleTurnstileExpired = () => {
-    updateStatus("Verification expired. Please wait a moment and try again.");
+    updateStatus(UI_TEXT.verificationExpired);
     setSubmitState(false, defaultButtonLabel);
 
     resetTurnstile();
@@ -248,7 +272,7 @@ if (form) {
     const contentType = response.headers.get("content-type") || "";
 
     if (!contentType.includes("application/json")) {
-      return "The message could not be sent. Please try again.";
+      return UI_TEXT.sendFailed;
     }
 
     try {
@@ -264,7 +288,7 @@ if (form) {
       console.error("Formspree error payload could not be parsed", error);
     }
 
-    return "The message could not be sent. Please try again.";
+    return UI_TEXT.sendFailed;
   };
 
   const loadTurnstileScript = () => {
@@ -312,7 +336,7 @@ if (form) {
     }
 
     hasStartedTurnstile = true;
-    setSubmitState(false, "Verifying...");
+    setSubmitState(false, UI_TEXT.verifying);
 
     try {
       const turnstile = await loadTurnstileScript();
@@ -339,14 +363,14 @@ if (form) {
 
     if (!getTurnstileResponse()) {
       startTurnstile();
-      updateStatus("Spam protection is still loading. Please wait a moment and submit again.");
-      setSubmitState(false, "Verifying...");
+      updateStatus(UI_TEXT.spamLoading);
+      setSubmitState(false, UI_TEXT.verifying);
       return;
     }
 
     updateStatus("");
     form.setAttribute("aria-busy", "true");
-    setSubmitState(false, "Sending...");
+    setSubmitState(false, UI_TEXT.sending);
 
     try {
       const response = await fetch(formAction, {
@@ -367,9 +391,9 @@ if (form) {
     } catch (error) {
       console.error("Form submission error", error);
       resetTurnstile();
-      updateStatus(error instanceof Error ? error.message : "The message could not be sent. Please try again.");
+      updateStatus(error instanceof Error ? error.message : UI_TEXT.sendFailed);
       form.removeAttribute("aria-busy");
-      setSubmitState(false, "Verifying...");
+      setSubmitState(false, UI_TEXT.verifying);
     }
   });
 }
