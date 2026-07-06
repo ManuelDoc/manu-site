@@ -11,6 +11,16 @@
   <link rel="alternate" hreflang="es" href="https://www.manueldocampo.com/es/thank-you.html">
   <link rel="alternate" hreflang="x-default" href="https://www.manueldocampo.com/thank-you.html">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>
+    // Apply saved/system theme before first paint to avoid a flash.
+    try {
+      var t = localStorage.getItem("theme");
+      if (t !== "light" && t !== "dark") {
+        t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body class="thanks-page">
@@ -30,6 +40,23 @@
         <nav class="site-nav" aria-label="Principal">
           <a href="/es/#packages">Paquetes</a>
           <a href="/es/#services">Servicios</a>
+          
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle class="sun-core" cx="12" cy="12" r="4.2"></circle>
+    <line class="sun-ray" style="--ray:0" x1="12" y1="2.5" x2="12" y2="4.9"></line>
+    <line class="sun-ray" style="--ray:1" x1="19.1" y1="4.9" x2="17.4" y2="6.6"></line>
+    <line class="sun-ray" style="--ray:2" x1="21.5" y1="12" x2="19.1" y2="12"></line>
+    <line class="sun-ray" style="--ray:3" x1="19.1" y1="19.1" x2="17.4" y2="17.4"></line>
+    <line class="sun-ray" style="--ray:4" x1="12" y1="21.5" x2="12" y2="19.1"></line>
+    <line class="sun-ray" style="--ray:5" x1="4.9" y1="19.1" x2="6.6" y2="17.4"></line>
+    <line class="sun-ray" style="--ray:6" x1="2.5" y1="12" x2="4.9" y2="12"></line>
+    <line class="sun-ray" style="--ray:7" x1="4.9" y1="4.9" x2="6.6" y2="6.6"></line>
+  </svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path class="moon-shape" d="M20.3 14.2A8.2 8.2 0 0 1 9.8 3.7a8.2 8.2 0 1 0 10.5 10.5Z"></path>
+  </svg>
+</button>
           <a class="lang-switch" href="/thank-you.html" lang="en" hreflang="en" aria-label="View this page in English">EN</a>
           <a class="button button--small button--primary" href="/es/#contact">Volver a la web</a>
         </nav>
@@ -61,5 +88,6 @@
       </div>
     </footer>
   </div>
+  <script src="/theme.js" defer></script>
 </body>
 </html>
