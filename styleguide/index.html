@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <title>Style Guide — Manuel Docampo</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <style>
+  body { margin: 0; background: linear-gradient(180deg, #08111f 0%, #0a1422 44%, #0d1727 100%); font-family: "Avenir Next", "Trebuchet MS", sans-serif; color: #f4f7fb; line-height: 1.6; }
+  a { color: #8df5e4; }
+  a:hover { color: #2dd4bf; }
+  ::selection { color: #08111f; background: rgba(45, 212, 191, 0.75); }
+  </style>
+</head>
+<body>
+<main>
+<div style="min-height: 100vh; padding: 0 24px 96px">
+  <div style="max-width: 1120px; margin: 0 auto">
+
+    <!-- Header -->
+    <header data-screen-label="Portada" style="display: flex; align-items: center; gap: 16px; padding: 56px 0 40px; border-bottom: 1px solid rgba(184, 240, 255, 0.16)">
+      <img src="assets/logo.svg" alt="Logo Manuel Docampo" width="56" height="56" style="display: block; width: 56px; height: 56px">
+      <div style="display: grid; gap: 2px">
+        <div style="font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #38bdf8">Guía de estilo</div>
+        <h1 style="margin: 0; font-size: 34px; font-weight: 850; line-height: 1.05">manueldocampo.com</h1>
+        <div style="color: #a9b8cb; font-size: 14px">Extraída del código fuente · styles.css · Julio 2026</div>
+      </div>
+    </header>
+
+    <!-- Logo -->
+    <section data-screen-label="Logo" style="padding: 56px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">01 · Logo</div>
+      <h2 style="margin: 0 0 24px; font-size: 30px; font-weight: 850; line-height: 1.1">Marca</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+        <div style="display: grid; place-items: center; gap: 12px; padding: 40px 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: #132238">
+          <img src="assets/logo.svg" alt="Logotipo sobre fondo oscuro" width="80" height="80" style="width: 80px; height: 80px">
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">favicon.svg · logotipo · fondo oscuro</div>
+        </div>
+        <div style="display: grid; place-items: center; gap: 12px; padding: 40px 24px; border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 22px; background: #f7fafd">
+          <img src="assets/logo.svg" alt="Logotipo sobre fondo claro" width="80" height="80" style="width: 80px; height: 80px">
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">favicon.svg · logotipo · fondo claro</div>
+        </div>
+        <div style="display: grid; place-items: center; gap: 12px; padding: 40px 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+          <img src="assets/logo-rounded.svg" alt="Marca alternativa" width="48" height="48" style="width: 48px; height: 48px">
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">logo-pixel.svg · marca alternativa</div>
+        </div>
+      </div>
+      <div style="margin-top: 14px; font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">Degradado del logotipo: #5fe0e6 → #1f8f9c (135°) · esquinas rx 11/52</div>
+    </section>
+
+    <!-- Colores -->
+    <section data-screen-label="Colores" style="padding: 64px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">02 · Color</div>
+      <h2 style="margin: 0 0 8px; font-size: 30px; font-weight: 850; line-height: 1.1">Paleta — tema oscuro (por defecto)</h2>
+      <p style="margin: 0 0 24px; color: #a9b8cb; max-width: 60ch">Definida en <span style="font-family: ui-monospace, monospace; font-size: 0.9em">:root</span>. Los nombres de variable son los del código.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px">
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #2dd4bf"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Acento principal (teal)</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-mango · #2dd4bf</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #38bdf8"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Acento secundario (sky)</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-coral · #38bdf8</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #8df5e4"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Acento suave (mint)</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-yellow · #8df5e4</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #6ee7b7"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Verde salvia</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-sage · #6ee7b7</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #08111f"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Fondo base</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-charcoal · #08111f</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #0a1422"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Fondo página</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-cream · #0a1422</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #132238"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Superficie fuerte</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-surface-strong · #132238</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: rgba(16, 27, 45, 0.82)"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Superficie (cards)</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-surface · rgba(16,27,45,.82)</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #163454"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Azul medio</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-peach · #163454</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #f4f7fb"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Texto</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-text · #f4f7fb</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: #a9b8cb"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Texto atenuado</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-muted · #a9b8cb</div></div>
+        </div>
+        <div style="border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; overflow: hidden; background: #132238">
+          <div style="height: 84px; background: rgba(184, 240, 255, 0.16); background-image: linear-gradient(180deg, #0a1422, #0a1422); background-blend-mode: overlay"></div>
+          <div style="padding: 12px 14px"><div style="font-weight: 800; font-size: 14px">Bordes</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">--color-border · rgba(184,240,255,.16)</div></div>
+        </div>
+      </div>
+
+      <h3 style="margin: 40px 0 16px; font-size: 20px; font-weight: 850">Tema claro (toggle)</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; padding: 20px; border-radius: 22px; background: #f0f6fa; border: 1px solid rgba(13, 40, 71, 0.14)">
+        <div style="border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 16px; overflow: hidden; background: #ffffff">
+          <div style="height: 64px; background: #eef4f9"></div>
+          <div style="padding: 10px 14px"><div style="font-weight: 800; font-size: 14px; color: #0e1c2b">Fondo</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">#eef4f9</div></div>
+        </div>
+        <div style="border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 16px; overflow: hidden; background: #ffffff">
+          <div style="height: 64px; background: #ffffff; border-bottom: 1px solid rgba(13, 40, 71, 0.1)"></div>
+          <div style="padding: 10px 14px"><div style="font-weight: 800; font-size: 14px; color: #0e1c2b">Superficie</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">#ffffff / rgba(255,255,255,.88)</div></div>
+        </div>
+        <div style="border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 16px; overflow: hidden; background: #ffffff">
+          <div style="height: 64px; background: #0e1c2b"></div>
+          <div style="padding: 10px 14px"><div style="font-weight: 800; font-size: 14px; color: #0e1c2b">Texto</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">#0e1c2b</div></div>
+        </div>
+        <div style="border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 16px; overflow: hidden; background: #ffffff">
+          <div style="height: 64px; background: #4c5d72"></div>
+          <div style="padding: 10px 14px"><div style="font-weight: 800; font-size: 14px; color: #0e1c2b">Texto atenuado</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">#4c5d72</div></div>
+        </div>
+        <div style="border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 16px; overflow: hidden; background: #ffffff">
+          <div style="height: 64px; background: #0270ad"></div>
+          <div style="padding: 10px 14px"><div style="font-weight: 800; font-size: 14px; color: #0e1c2b">Eyebrow / enlaces</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">#0270ad</div></div>
+        </div>
+        <div style="border: 1px solid rgba(13, 40, 71, 0.14); border-radius: 16px; overflow: hidden; background: #ffffff">
+          <div style="height: 64px; background: #0b8a7c"></div>
+          <div style="padding: 10px 14px"><div style="font-weight: 800; font-size: 14px; color: #0e1c2b">Teal oscuro (acento)</div><div style="font-family: ui-monospace, monospace; font-size: 12px; color: #4c5d72">#0b8a7c / #0b6e63</div></div>
+        </div>
+      </div>
+
+      <h3 style="margin: 40px 0 16px; font-size: 20px; font-weight: 850">Degradado de marca</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center">
+        <div style="width: 280px; height: 84px; border-radius: 16px; background: linear-gradient(135deg, #2dd4bf, #38bdf8)"></div>
+        <div style="font-family: ui-monospace, monospace; font-size: 13px; color: #a9b8cb">linear-gradient(135deg, #2dd4bf, #38bdf8)<br>Uso: botón primario, marca, bullets, subrayado de nav</div>
+      </div>
+    </section>
+
+    <!-- Tipografía -->
+    <section data-screen-label="Tipografia" style="padding: 64px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">03 · Tipografía</div>
+      <h2 style="margin: 0 0 8px; font-size: 30px; font-weight: 850; line-height: 1.1">Avenir Next</h2>
+      <p style="margin: 0 0 28px; color: #a9b8cb; max-width: 60ch">Una sola familia para display y cuerpo: <span style="font-family: ui-monospace, monospace; font-size: 0.9em">"Avenir Next", "Trebuchet MS", sans-serif</span> (fuente de sistema, sin webfont).</p>
+
+      <div style="display: grid; gap: 22px; padding: 28px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+        <div style="display: grid; gap: 4px">
+          <div style="font-size: clamp(42px, 6vw, 86px); font-weight: 850; line-height: 1.05">Heading 1</div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">h1 · clamp(2.6rem, 7vw, 5.4rem) · weight 850 · line-height 1.05 · max-width 15ch</div>
+        </div>
+        <div style="display: grid; gap: 4px">
+          <div style="font-size: clamp(32px, 4vw, 54px); font-weight: 850; line-height: 1.05">Heading 2</div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">h2 · clamp(2rem, 4.4vw, 3.35rem) · weight 850 · max-width 18ch</div>
+        </div>
+        <div style="display: grid; gap: 4px">
+          <div style="font-size: 23px; font-weight: 850; line-height: 1.05">Heading 3</div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">h3 · 1.45rem · weight 850</div>
+        </div>
+        <div style="display: grid; gap: 4px">
+          <div style="color: #38bdf8; font-size: 13.5px; font-weight: 800; text-transform: uppercase">Eyebrow de sección</div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">.eyebrow · 0.84rem · weight 800 · uppercase · --color-coral</div>
+        </div>
+        <div style="display: grid; gap: 4px">
+          <div style="font-size: 16px; max-width: 60ch">Texto de cuerpo. Ayudo a pequeños negocios a tener presencia online con webs profesionales, hosting y mantenimiento.</div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">body · 1rem · line-height 1.6 · #f4f7fb (atenuado: #a9b8cb)</div>
+        </div>
+        <div style="display: grid; gap: 4px">
+          <div style="font-size: clamp(32px, 6vw, 45px); font-weight: 700; line-height: 1">450&nbsp;€</div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">precio · clamp(2rem, 6vw, 2.8rem) · weight 700 · line-height 1</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Botones -->
+    <section data-screen-label="Botones" style="padding: 64px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">04 · Botones</div>
+      <h2 style="margin: 0 0 24px; font-size: 30px; font-weight: 850; line-height: 1.1">Botones y enlaces</h2>
+      <div style="display: grid; gap: 16px; padding: 28px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 20px; border: 1px solid transparent; border-radius: 999px; font-weight: 800; text-decoration: none; color: #04111f; background: linear-gradient(135deg, #2dd4bf, #38bdf8); box-shadow: 0 18px 42px rgba(45, 212, 191, 0.24); transition: transform 0.2s ease, box-shadow 0.2s ease" style-hover="transform: translateY(-2px); box-shadow: 0 24px 54px rgba(45, 212, 191, 0.32)">Botón primario</a>
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 20px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 999px; font-weight: 800; text-decoration: none; color: #f4f7fb; background: rgba(255, 255, 255, 0.05); transition: transform 0.2s ease" style-hover="transform: translateY(-2px)">Botón secundario</a>
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 41px; padding: 11px 16px; border: 1px solid transparent; border-radius: 999px; font-weight: 800; font-size: 15px; text-decoration: none; color: #04111f; background: linear-gradient(135deg, #2dd4bf, #38bdf8); transition: transform 0.2s ease" style-hover="transform: translateY(-2px)">Botón small</a>
+        </div>
+        <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb; line-height: 1.7">.button · pill (radius 999px) · min-height 3rem · padding .9rem 1.25rem · weight 800<br>hover: translateY(-2px) + sombra más profunda · small: min-height 2.6rem</div>
+        <div style="height: 1px; background: rgba(184, 240, 255, 0.16)"></div>
+        <div style="display: flex; flex-wrap: wrap; gap: 28px; align-items: center">
+          <a href="#" style="position: relative; color: rgba(244, 247, 251, 0.78); font-size: 15px; font-weight: 700; text-decoration: none" style-hover="color: #f4f7fb; box-shadow: inset 0 -2px 0 #2dd4bf">Enlace de nav</a>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid rgba(184, 240, 255, 0.18); border-radius: 999px; background: rgba(16, 27, 45, 0.7); color: #f4f7fb; font-size: 13px; font-weight: 800; transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease" style-hover="border-color: rgba(45, 212, 191, 0.55); background: rgba(45, 212, 191, 0.12); color: #8df5e4; transform: translateY(-2px)">in</span>
+          <span style="display: inline-flex; align-items: center; justify-content: center; min-height: 34px; padding: 6px 12px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 999px; background: rgba(255, 255, 255, 0.05); font-size: 13px; font-weight: 800">ES</span>
+        </div>
+        <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">nav: subrayado 2px degradado al hover · .social-link: círculo 2.75rem · .lang-switch: pill borde</div>
+      </div>
+    </section>
+
+    <!-- Formularios -->
+    <section data-screen-label="Formularios" style="padding: 64px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">05 · Formularios</div>
+      <h2 style="margin: 0 0 24px; font-size: 30px; font-weight: 850; line-height: 1.1">Campos de formulario</h2>
+      <div style="display: grid; gap: 20px; padding: 28px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82); max-width: 640px">
+        <div style="display: grid; gap: 7px">
+          <label style="color: #ffffff; font-size: 15px; font-weight: 700">Nombre</label>
+          <input type="text" placeholder="Tu nombre" style="width: 100%; box-sizing: border-box; padding: 14px 16px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; background: rgba(255, 255, 255, 0.06); color: #ffffff; font: inherit" style-focus="outline: 3px solid rgba(45, 212, 191, 0.35); outline-offset: 2px; border-color: rgba(45, 212, 191, 0.55)">
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">radius 1rem · bg rgba(255,255,255,.06) · focus: outline 3px teal 35%</div>
+        </div>
+        <div style="display: grid; gap: 7px">
+          <label style="color: #ffffff; font-size: 15px; font-weight: 700">Email — estado de error</label>
+          <input type="text" value="correo-invalido" readonly="{{ true }}" style="width: 100%; box-sizing: border-box; padding: 14px 16px; border: 1px solid rgba(248, 113, 113, 0.78); border-radius: 16px; background: rgba(248, 113, 113, 0.08); color: #ffffff; font: inherit">
+          <div style="color: #fca5a5; font-size: 14px">Introduce un email válido.</div>
+        </div>
+        <div style="display: grid; gap: 7px">
+          <div style="padding: 14px 16px; border-radius: 16px; color: #f4f7fb; background: rgba(56, 189, 248, 0.14); font-size: 15px">Mensaje de estado del formulario (.contact-form__status)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section data-screen-label="Cards" style="padding: 64px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">06 · Cards</div>
+      <h2 style="margin: 0 0 24px; font-size: 30px; font-weight: 850; line-height: 1.1">Tarjetas y badges</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; align-items: stretch">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82); transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease" style-hover="transform: translateY(-4px); border-color: rgba(45, 212, 191, 0.34); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34)">
+          <h3 style="margin: 0; font-size: 23px; font-weight: 850; line-height: 1.05">Card estándar</h3>
+          <p style="margin: 0; color: #a9b8cb">Superficie translúcida, borde sutil, radius 22px. Hover: levanta 4px y el borde pasa a teal.</p>
+          <ul style="display: grid; gap: 11px; margin: 0; padding: 0; list-style: none">
+            <li style="display: flex; gap: 10px; align-items: flex-start"><span style="width: 10px; height: 10px; margin-top: 7px; flex: none; border-radius: 999px; background: linear-gradient(135deg, #2dd4bf, #38bdf8)"></span><span>Bullet con punto degradado</span></li>
+            <li style="display: flex; gap: 10px; align-items: flex-start"><span style="width: 10px; height: 10px; margin-top: 7px; flex: none; border-radius: 999px; background: linear-gradient(135deg, #2dd4bf, #38bdf8)"></span><span>Listas .card-list / .about-list</span></li>
+          </ul>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid rgba(45, 212, 191, 0.42); border-radius: 22px; background: linear-gradient(180deg, rgba(45, 212, 191, 0.12), rgba(56, 189, 248, 0.055)), #132238; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34); transition: transform 0.2s ease" style-hover="transform: translateY(-4px)">
+          <span style="align-self: flex-start; padding: 6px 12px; border-radius: 999px; background: rgba(45, 212, 191, 0.14); color: #8df5e4; font-size: 12.5px; font-weight: 800; text-transform: uppercase">Más popular</span>
+          <h3 style="margin: 0; font-size: 23px; font-weight: 850; line-height: 1.05">Card destacada</h3>
+          <div style="font-size: clamp(32px, 6vw, 45px); font-weight: 700; line-height: 1">750&nbsp;€</div>
+          <p style="margin: 0; color: #a9b8cb">Borde teal 42%, velo degradado sobre superficie fuerte, sombra grande.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+          <h3 style="margin: 0; font-size: 23px; font-weight: 850; line-height: 1.05">Lista tipo chip</h3>
+          <div style="padding: 15px 16px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; background: rgba(255, 255, 255, 0.045)">Elemento de .maintenance-list</div>
+          <div style="padding: 15px 16px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 16px; background: rgba(255, 255, 255, 0.045)">radius 1rem · bg blanco 4.5%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tokens -->
+    <section data-screen-label="Tokens" style="padding: 64px 0 0">
+      <div style="margin-bottom: 6px; color: #38bdf8; font-size: 14px; font-weight: 800; text-transform: uppercase">07 · Tokens</div>
+      <h2 style="margin: 0 0 24px; font-size: 30px; font-weight: 850; line-height: 1.1">Radios, sombras y layout</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+        <div style="display: grid; gap: 14px; padding: 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 850">Radios</h3>
+          <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap">
+            <div style="display: grid; place-items: center; width: 84px; height: 64px; border: 1px solid rgba(45, 212, 191, 0.4); border-radius: 22px; font-family: ui-monospace, monospace; font-size: 11px; color: #a9b8cb">22px md</div>
+            <div style="display: grid; place-items: center; width: 84px; height: 64px; border: 1px solid rgba(45, 212, 191, 0.4); border-radius: 32px; font-family: ui-monospace, monospace; font-size: 11px; color: #a9b8cb">32px lg</div>
+            <div style="display: grid; place-items: center; width: 84px; height: 44px; border: 1px solid rgba(45, 212, 191, 0.4); border-radius: 999px; font-family: ui-monospace, monospace; font-size: 11px; color: #a9b8cb">999 pill</div>
+            <div style="display: grid; place-items: center; width: 84px; height: 52px; border: 1px solid rgba(45, 212, 191, 0.4); border-radius: 16px; font-family: ui-monospace, monospace; font-size: 11px; color: #a9b8cb">1rem inputs</div>
+          </div>
+        </div>
+        <div style="display: grid; gap: 14px; padding: 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 850">Sombras</h3>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap">
+            <div style="display: grid; place-items: center; width: 120px; height: 72px; border-radius: 16px; background: #132238; box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22); font-family: ui-monospace, monospace; font-size: 11px; color: #a9b8cb">shadow-sm</div>
+            <div style="display: grid; place-items: center; width: 120px; height: 72px; border-radius: 16px; background: #132238; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.34); font-family: ui-monospace, monospace; font-size: 11px; color: #a9b8cb">shadow-lg</div>
+          </div>
+          <div style="font-family: ui-monospace, monospace; font-size: 12px; color: #a9b8cb">sm: 0 18px 42px rgba(0,0,0,.22)<br>lg: 0 30px 80px rgba(0,0,0,.34)</div>
+        </div>
+        <div style="display: grid; gap: 10px; padding: 24px; border: 1px solid rgba(184, 240, 255, 0.16); border-radius: 22px; background: rgba(16, 27, 45, 0.82)">
+          <h3 style="margin: 0; font-size: 18px; font-weight: 850">Layout y movimiento</h3>
+          <div style="font-family: ui-monospace, monospace; font-size: 12.5px; color: #a9b8cb; line-height: 1.9">container: min(1120px, 100vw − 1.5rem)<br>sección: padding 4.75rem 0<br>transiciones: 0.2s ease<br>header: sticky + blur(16px)<br>hero: rejilla 56px + halos radiales teal/sky</div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top: 72px; padding-top: 20px; border-top: 1px solid rgba(184, 240, 255, 0.16); color: #a9b8cb; font-size: 13px">
+      Guía generada desde el código fuente de manueldocampo.com — valores literales de styles.css.
+    </footer>
+  </div>
+</div>
+</main>
+</body>
+</html>
