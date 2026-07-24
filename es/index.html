@@ -21,7 +21,7 @@
       document.documentElement.dataset.theme = t;
     } catch (e) {}
   </script>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles.css?v=20260724-ig2">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -379,6 +379,44 @@
         </div>
       </section>
 
+      <section
+        class="section section--alt ig-feed"
+        id="instagram"
+        aria-labelledby="ig-feed-title"
+        data-ig-feed
+        data-behold-url="https://feeds.behold.so/5SyDWDnawzjXCpz8iuqR"
+        data-i18n-view="Ver publicación de Instagram"
+        data-i18n-prev="Publicaciones anteriores"
+        data-i18n-next="Siguientes publicaciones"
+        data-i18n-newtab="se abre en una pestaña nueva"
+        data-i18n-demo="Publicación de ejemplo"
+      >
+        <div class="container">
+          <div class="ig-feed__head">
+            <div class="section-heading section-heading--left">
+              <p class="eyebrow">Instagram</p>
+              <h2 id="ig-feed-title">Lo último en Instagram</h2>
+              <p>Trabajos y novedades recientes —
+                <a class="ig-feed__handle" href="https://www.instagram.com/manueldocampoweb/" target="_blank" rel="noopener noreferrer">@manueldocampoweb</a>
+              </p>
+            </div>
+
+            <div class="ig-feed__controls">
+              <button class="ig-feed__control" type="button" data-ig-prev aria-label="Publicaciones anteriores" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg>
+              </button>
+              <button class="ig-feed__control" type="button" data-ig-next aria-label="Siguientes publicaciones" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="ig-feed__viewport">
+            <ul class="ig-feed__track" data-ig-track aria-label="Publicaciones recientes de Instagram"></ul>
+          </div>
+        </div>
+      </section>
+
       <section class="section" aria-labelledby="final-cta-title">
         <div class="container final-cta">
           <div>
@@ -488,6 +526,7 @@
   </div>
   <script src="/hero.js" defer></script>
   <script src="/scroll-reveal.js" defer></script>
+  <script src="/instagram.js?v=20260724-ig2" defer></script>
   <script src="/script.js" defer></script>
   <script src="/theme.js" defer></script>
 </body>
