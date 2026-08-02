@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Is WebMCP? Why It Could Matter for Your Website Soon | Manuel Docampo</title>
+  <meta name="description" content="WebMCP is a new web standard from Google and Microsoft that lets AI agents use your website properly. What it means for your business, and how developers implement it.">
+  <meta name="theme-color" content="#08111f">
+  <link rel="canonical" href="https://www.manueldocampo.com/blog/web-mcp/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="What Is WebMCP? Why It Could Matter for Your Website Soon">
+  <meta property="og:description" content="WebMCP is a new web standard from Google and Microsoft that lets AI agents use your website properly. What it means for your business, and how developers implement it.">
+  <meta property="og:url" content="https://www.manueldocampo.com/blog/web-mcp/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <script>
+    // Apply saved/system theme before first paint to avoid a flash.
+    try {
+      var t = localStorage.getItem("theme");
+      if (t !== "light" && t !== "dark") {
+        t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What Is WebMCP? Why It Could Matter for Your Website Soon",
+    "description": "WebMCP is a new web standard from Google and Microsoft that lets AI agents use your website properly. What it means for your business, and how developers implement it.",
+    "datePublished": "2026-08-02",
+    "dateModified": "2026-08-02",
+    "author": {
+      "@type": "Person",
+      "name": "Manuel Docampo",
+      "url": "https://www.manueldocampo.com/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Manuel Docampo"
+    },
+    "mainEntityOfPage": "https://www.manueldocampo.com/blog/web-mcp/"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="page-shell">
+    <header class="site-header mobile-header" id="top" data-mobile-header>
+      <div class="container site-header__inner">
+        <a class="brand" href="../../" aria-label="Manuel Docampo home">
+          <img class="brand__mark mobile-header__logo" src="../../assets/logo-pixel.svg" alt="" width="52" height="52" aria-hidden="true" decoding="async">
+          <span class="brand__text">
+            <span class="brand__name">Manuel Docampo</span>
+            <span class="brand__role">Small business websites and support</span>
+          </span>
+        </a>
+
+        <a class="button button--primary mobile-header__cta" href="../../#contact">Start your project</a>
+
+        <button class="theme-toggle theme-toggle--header" type="button" data-theme-toggle aria-label="Switch theme">
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle class="sun-core" cx="12" cy="12" r="4.2"></circle>
+    <line class="sun-ray" style="--ray:0" x1="12" y1="2.5" x2="12" y2="4.9"></line>
+    <line class="sun-ray" style="--ray:1" x1="19.1" y1="4.9" x2="17.4" y2="6.6"></line>
+    <line class="sun-ray" style="--ray:2" x1="21.5" y1="12" x2="19.1" y2="12"></line>
+    <line class="sun-ray" style="--ray:3" x1="19.1" y1="19.1" x2="17.4" y2="17.4"></line>
+    <line class="sun-ray" style="--ray:4" x1="12" y1="21.5" x2="12" y2="19.1"></line>
+    <line class="sun-ray" style="--ray:5" x1="4.9" y1="19.1" x2="6.6" y2="17.4"></line>
+    <line class="sun-ray" style="--ray:6" x1="2.5" y1="12" x2="4.9" y2="12"></line>
+    <line class="sun-ray" style="--ray:7" x1="4.9" y1="4.9" x2="6.6" y2="6.6"></line>
+  </svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path class="moon-shape" d="M20.3 14.2A8.2 8.2 0 0 1 9.8 3.7a8.2 8.2 0 1 0 10.5 10.5Z"></path>
+  </svg>
+</button>
+
+        <button class="mobile-header__menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu" data-mobile-menu-open>
+          <span class="mobile-header__menu-icon" aria-hidden="true"></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="../../#packages">Packages</a>
+          <a href="../../#hosting">Hosting</a>
+          <a href="../../#services">Services</a>
+          <a href="../../#about">About</a>
+          <a href="../" aria-current="page">Blog</a>
+
+          <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle class="sun-core" cx="12" cy="12" r="4.2"></circle>
+    <line class="sun-ray" style="--ray:0" x1="12" y1="2.5" x2="12" y2="4.9"></line>
+    <line class="sun-ray" style="--ray:1" x1="19.1" y1="4.9" x2="17.4" y2="6.6"></line>
+    <line class="sun-ray" style="--ray:2" x1="21.5" y1="12" x2="19.1" y2="12"></line>
+    <line class="sun-ray" style="--ray:3" x1="19.1" y1="19.1" x2="17.4" y2="17.4"></line>
+    <line class="sun-ray" style="--ray:4" x1="12" y1="21.5" x2="12" y2="19.1"></line>
+    <line class="sun-ray" style="--ray:5" x1="4.9" y1="19.1" x2="6.6" y2="17.4"></line>
+    <line class="sun-ray" style="--ray:6" x1="2.5" y1="12" x2="4.9" y2="12"></line>
+    <line class="sun-ray" style="--ray:7" x1="4.9" y1="4.9" x2="6.6" y2="6.6"></line>
+  </svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path class="moon-shape" d="M20.3 14.2A8.2 8.2 0 0 1 9.8 3.7a8.2 8.2 0 1 0 10.5 10.5Z"></path>
+  </svg>
+</button>
+          <a class="lang-switch" href="/es/" lang="es" hreflang="es" aria-label="Ver esta página en español">ES</a>
+          <a class="button button--small button--primary" href="../../#contact">Start your project</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="mobile-menu-overlay" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation menu" aria-hidden="true" hidden data-mobile-menu>
+      <div class="mobile-menu-overlay__top">
+        <button class="mobile-menu-overlay__close" type="button" aria-label="Close navigation menu" data-mobile-menu-close>
+          <span class="mobile-menu-overlay__close-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <nav class="mobile-menu-overlay__nav" aria-label="Mobile navigation">
+        <ul class="mobile-menu-overlay__list">
+          <li>
+            <a class="mobile-menu-overlay__link" href="../../#packages">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2.8 20 7.2v9.6l-8 4.4-8-4.4V7.2L12 2.8Z"></path>
+                <path d="m4.4 7.5 7.6 4.2 7.6-4.2"></path>
+                <path d="M12 11.7v8.7"></path>
+              </svg>
+              <span>Packages</span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu-overlay__link" href="../../#hosting">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 5.5h16v5H4v-5Z"></path>
+                <path d="M4 13.5h16v5H4v-5Z"></path>
+                <path d="M7 8h.1"></path>
+                <path d="M7 16h.1"></path>
+                <path d="M11 8h6"></path>
+                <path d="M11 16h6"></path>
+              </svg>
+              <span>Hosting</span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu-overlay__link" href="../../#services">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M14.8 4.2a5 5 0 0 0 5 5l-8.4 8.4a3.2 3.2 0 0 1-4.5-4.5l8.4-8.4Z"></path>
+                <path d="M7.2 16.8 3.8 20.2"></path>
+              </svg>
+              <span>Services</span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu-overlay__link" href="../../#about">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"></path>
+                <path d="M4.5 20a7.5 7.5 0 0 1 15 0"></path>
+              </svg>
+              <span>About</span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu-overlay__link" href="../" aria-current="page">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6 3.5h9l3 3v14h-12v-17Z"></path>
+                <path d="M9 10h6"></path>
+                <path d="M9 13.5h6"></path>
+                <path d="M9 17h4"></path>
+              </svg>
+              <span>Blog</span>
+            </a>
+          </li>
+          <li>
+            <a class="mobile-menu-overlay__link" href="/es/" lang="es" hreflang="es">
+              <svg class="mobile-menu-overlay__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9"></circle>
+                <path d="M3.6 9h16.8"></path>
+                <path d="M3.6 15h16.8"></path>
+                <path d="M12 3a14.5 14.5 0 0 1 0 18"></path>
+                <path d="M12 3a14.5 14.5 0 0 0 0 18"></path>
+              </svg>
+              <span>Español</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <a class="button button--primary mobile-menu-overlay__cta" href="../../#contact">Start your project</a>
+    </div>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <article class="post">
+            <p class="post__meta"><time datetime="2026-08-02">2 August 2026</time> &middot; Manuel Docampo</p>
+            <h1>What Is WebMCP? Why It Could Matter for Your Website Soon</h1>
+            <p class="post__lede">Someone opens ChatGPT and types: "find me a private chef for a birthday party this Saturday."</p>
+            <div class="post__decoration">
+              <img src="../../assets/decorative/bot-invader-feliz.svg" alt="" aria-hidden="true" loading="lazy" width="38" height="25">
+            </div>
+            <p class="post__lede">What happens next is either fast and right, or slow, expensive and wrong. WebMCP is the reason it's about to become the first one.</p>
+
+            <div class="post__body">
+              <h2>The ten-second explanation</h2>
+              <p>When an AI assistant lands on a website today, it doesn't really "see" a website.</p>
+              <div class="post__decoration post__decoration--right">
+                <img src="../../assets/decorative/manu-con-bot.svg" alt="" aria-hidden="true" loading="lazy" width="64" height="70">
+              </div>
+              <p>It sees a pile of unlabelled buttons and has to guess. It pokes at one, takes a screenshot, looks at the picture, guesses again. Every screenshot it has to think about costs the assistant time and tokens &mdash; think of tokens as its phone bill, and a screenshot as an expensive call.</p>
+              <p>WebMCP is a set of instructions a website can hand straight to an AI agent: here's how to book a table, here's how to check a price, here's how to search the menu. No more guessing, no more screenshots.</p>
+
+              <h2>Why this is worth knowing before it's everywhere</h2>
+              <p>More people are starting to ask an assistant to do things for them instead of doing the searching themselves.</p>
+              <div class="post__decoration">
+                <img src="../../assets/decorative/manu-idea.png" alt="" aria-hidden="true" loading="lazy" width="241" height="316">
+              </div>
+              <p>Find a chef, book a table, get a quote. If your site can't answer clearly, one of two things happens: the assistant gives up and tries a competitor, or it limps through the slow, expensive method &mdash; and a slow answer loses a customer just as fast as a wrong one.</p>
+              <p>This isn't only a technical problem. It's a business one, and it will show up on the sites that are hardest to use long before anyone tells you why bookings dropped.</p>
+
+              <h2>What's actually happening right now</h2>
+              <p>Google and Microsoft are building WebMCP together, inside the W3C's Web Machine Learning Community Group. Chrome opened a public origin trial in Chrome 149, announced at Google I/O in May 2026, and Expedia, Booking.com, Shopify, Etsy, Instacart, Target, Credit Karma and TurboTax are already testing it.</p>
+              <p>Worth being precise: it's off by default, Safari and Firefox haven't committed to it, and the spec is still moving. This is early. But two of the biggest browser makers agreeing on the same approach from day one doesn't happen often.</p>
+
+              <h2>For developers: how it actually works</h2>
+              <p>WebMCP gives you two ways to expose an action, and which one you use depends on what the action is.</p>
+              <div class="post__decoration post__decoration--right">
+                <img src="../../assets/decorative/manu-computer-2.png" alt="" aria-hidden="true" loading="lazy" width="293" height="317">
+              </div>
+              <p><strong>Declarative, for plain forms.</strong> If the action is already a normal HTML form, you just label it. A few new attributes tell the browser what the form does, and it builds the tool description for you &mdash; no JavaScript required:</p>
+              <pre><code><span class="tok-punc">&lt;</span><span class="tok-tag">form</span> <span class="tok-attr">toolname</span><span class="tok-punc">=</span><span class="tok-str">"book-private-chef"</span> <span class="tok-attr">tooldescription</span><span class="tok-punc">=</span><span class="tok-str">"Book a private chef for an event"</span><span class="tok-punc">&gt;</span>
+  <span class="tok-punc">&lt;</span><span class="tok-tag">input</span> <span class="tok-attr">type</span><span class="tok-punc">=</span><span class="tok-str">"date"</span> <span class="tok-attr">name</span><span class="tok-punc">=</span><span class="tok-str">"date"</span> <span class="tok-attr">toolparamdescription</span><span class="tok-punc">=</span><span class="tok-str">"Date of the event"</span> <span class="tok-attr">required</span><span class="tok-punc">&gt;</span>
+  <span class="tok-punc">&lt;</span><span class="tok-tag">input</span> <span class="tok-attr">type</span><span class="tok-punc">=</span><span class="tok-str">"number"</span> <span class="tok-attr">name</span><span class="tok-punc">=</span><span class="tok-str">"guests"</span> <span class="tok-attr">toolparamdescription</span><span class="tok-punc">=</span><span class="tok-str">"Number of guests"</span> <span class="tok-attr">required</span><span class="tok-punc">&gt;</span>
+  <span class="tok-punc">&lt;</span><span class="tok-tag">button</span> <span class="tok-attr">type</span><span class="tok-punc">=</span><span class="tok-str">"submit"</span><span class="tok-punc">&gt;</span>Request a chef<span class="tok-punc">&lt;/</span><span class="tok-tag">button</span><span class="tok-punc">&gt;</span>
+<span class="tok-punc">&lt;/</span><span class="tok-tag">form</span><span class="tok-punc">&gt;</span></code></pre>
+              <p><strong>Imperative, for everything else.</strong> If the action isn't a form &mdash; checking a booking, updating a basket, anything driven by JavaScript &mdash; you register it with the browser's <code>modelContext</code> API directly:</p>
+              <pre><code><span class="tok-kw">await</span> document.modelContext.<span class="tok-fn">registerTool</span>({
+  <span class="tok-prop">name</span>: <span class="tok-str">"check-booking-status"</span>,
+  <span class="tok-prop">description</span>: <span class="tok-str">"Check the status of an existing booking by reference number"</span>,
+  <span class="tok-prop">inputSchema</span>: {
+    <span class="tok-prop">type</span>: <span class="tok-str">"object"</span>,
+    <span class="tok-prop">properties</span>: {
+      <span class="tok-prop">reference</span>: { <span class="tok-prop">type</span>: <span class="tok-str">"string"</span>, <span class="tok-prop">description</span>: <span class="tok-str">"The booking reference number"</span> }
+    },
+    <span class="tok-prop">required</span>: [<span class="tok-str">"reference"</span>]
+  },
+  <span class="tok-kw">async</span> <span class="tok-fn">execute</span>({ reference }) {
+    <span class="tok-kw">const</span> status = <span class="tok-kw">await</span> <span class="tok-fn">getBookingStatus</span>(reference);
+    <span class="tok-kw">return</span> { content: [{ type: <span class="tok-str">"text"</span>, text: <span class="tok-str">`Booking ${reference} is ${status}.`</span> }] };
+  }
+});</code></pre>
+              <p>Most small business sites will only ever need the first one. If your forms are already clean and clearly labelled, you're most of the way there before writing a line of the new code.</p>
+
+              <h2>You shouldn't have to keep track of any of this. I do.</h2>
+              <p>Most of what's in this article will look different within a year. New attributes, more browsers on board, possibly a different name for the whole thing. That's normal this early on &mdash; and it's exactly why a business owner shouldn't be expected to follow it on top of everything else they're already doing.</p>
+              <p>That part is mine to worry about, not yours.</p>
+              <div class="post__decoration">
+                <img src="../../assets/decorative/manu-bazos-cruzados.png" alt="" aria-hidden="true" loading="lazy" width="173" height="305">
+              </div>
+              <p>When I build or look after a website, I keep watching what changes underneath it &mdash; new standards, new ways browsers and AI assistants read a page &mdash; together with a small set of AI agents I run for exactly this. Your site gets brought up to date quietly, in the background, so you stay easy to find on whatever someone uses to search next, without you ever having to notice it happened.</p>
+              <p><a class="button button--primary" href="../../#contact">Talk to me about your website</a></p>
+
+              <p><em>Written by Manuel Docampo with the help of AI research and drafting tools. Reviewed, edited and fact-checked by me &mdash; the views here are my own.</em></p>
+            </div>
+
+            <div class="post__footer">
+              <a class="button button--secondary" href="../">&larr; Back to the Blog</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__content">
+          <p>Manuel Docampo. Simple websites, hosting and maintenance for small businesses.</p>
+          <a href="mailto:docampowales@gmail.com">docampowales@gmail.com</a>
+        </div>
+
+        <nav class="social-links" aria-label="Social profiles">
+          <a class="social-link" href="https://www.instagram.com/manueldocampoweb/" target="_blank" rel="noopener noreferrer">
+            <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5Zm8.72 2.35a1.18 1.18 0 1 1 0 2.36 1.18 1.18 0 0 1 0-2.36ZM12 7.25A4.75 4.75 0 1 1 12 16.75 4.75 4.75 0 0 1 12 7.25Zm0 2A2.75 2.75 0 1 0 12 14.75 2.75 2.75 0 0 0 12 9.25Z"></path>
+            </svg>
+            <span class="sr-only">Instagram profile (opens in a new tab)</span>
+          </a>
+          <a class="social-link" href="https://www.linkedin.com/in/manuel-docampo-rodriguez-67a61446/" target="_blank" rel="noopener noreferrer">
+            <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M5.05 3.35A2.35 2.35 0 1 1 5.05 8.05 2.35 2.35 0 0 1 5.05 3.35ZM3.15 9.7h3.8V21h-3.8V9.7Zm6.05 0h3.64v1.54h.05c.51-.96 1.75-1.82 3.6-1.82 3.85 0 4.56 2.53 4.56 5.82V21h-3.8v-5.1c0-1.22-.02-2.78-1.69-2.78-1.7 0-1.96 1.33-1.96 2.69V21H9.2V9.7Z"></path>
+            </svg>
+            <span class="sr-only">LinkedIn profile (opens in a new tab)</span>
+          </a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../../scroll-reveal.js" defer></script>
+  <script src="../../script.js" defer></script>
+  <script src="../../theme.js" defer></script>
+</body>
+</html>
