@@ -355,6 +355,21 @@ if (form) {
     }
   };
 
+  const notifyWhatsApp = (formData) => {
+    const payload = Object.fromEntries(formData.entries());
+
+    fetch("/api/notify", {
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      keepalive: true,
+      method: "POST",
+    }).catch((error) => {
+      console.error("WhatsApp notification failed", error);
+    });
+  };
+
   form.addEventListener("focusin", startTurnstile, { once: true });
   form.addEventListener("pointerdown", startTurnstile, { once: true });
 
@@ -373,8 +388,9 @@ if (form) {
     setSubmitState(false, UI_TEXT.sending);
 
     try {
+      const formData = new FormData(form);
       const response = await fetch(formAction, {
-        body: new FormData(form),
+        body: formData,
         headers: {
           Accept: "application/json",
         },
@@ -387,6 +403,7 @@ if (form) {
         throw new Error(errorMessage);
       }
 
+      notifyWhatsApp(formData);
       window.location.assign(successUrl);
     } catch (error) {
       console.error("Form submission error", error);
