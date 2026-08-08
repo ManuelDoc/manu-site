@@ -1803,52 +1803,6 @@ button:focus-visible,
   color: var(--color-mango);
 }
 
-/* Language suggestion banner (shown by lang-suggest.js) */
-.lang-banner {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 60;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem 1rem;
-  max-width: 34rem;
-  margin-inline: auto;
-  padding: 0.9rem 1.1rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-strong);
-  box-shadow: var(--shadow-lg);
-}
-
-.lang-banner p {
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.lang-banner__close {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  padding: 0;
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--color-muted);
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.lang-banner__close:hover {
-  color: var(--color-text);
-  border-color: var(--color-muted);
-}
-
 /* ==========================================================================
    Light theme (toggled via html[data-theme="light"], see theme.js)
    ========================================================================== */
