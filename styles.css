@@ -2513,6 +2513,7 @@ html[data-theme="light"] .ig-feed__badge {
 .post-card__image {
   display: block;
   width: calc(100% + 3rem);
+  max-width: calc(100% + 3rem);
   height: auto;
   aspect-ratio: 2 / 1;
   margin: -1.5rem -1.5rem 1.25rem;
