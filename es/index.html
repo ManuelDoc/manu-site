@@ -21,7 +21,7 @@
       document.documentElement.dataset.theme = t;
     } catch (e) {}
   </script>
-  <link rel="stylesheet" href="/styles.css?v=20260809-imgfix">
+  <link rel="stylesheet" href="/styles.css?v=20260810-forms">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Saltar al contenido</a>
@@ -438,7 +438,7 @@
 
             <div class="contact-form__status" data-fs-error role="alert"></div>
 
-            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xzdygglk" method="POST" data-success-url="thank-you.html">
+            <form class="contact-form" id="contact-form" action="/api/notify" method="POST" data-success-url="thank-you.html">
               <input name="subject" type="hidden" value="Nueva consulta desde manueldocampo.com (español)">
               <input name="_language" type="hidden" value="es">
               <input name="_next" type="hidden" value="https://www.manueldocampo.com/es/thank-you.html">
@@ -528,7 +528,7 @@
   <script src="/hero.js" defer></script>
   <script src="/scroll-reveal.js" defer></script>
   <script src="/instagram.js?v=20260724-ig2" defer></script>
-  <script src="/script.js" defer></script>
+  <script src="/script.js?v=20260810-forms" defer></script>
   <script src="/theme.js" defer></script>
 </body>
 </html>
