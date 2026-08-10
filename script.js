@@ -355,19 +355,25 @@ if (form) {
     }
   };
 
-  const notifyWhatsApp = (formData) => {
-    const payload = Object.fromEntries(formData.entries());
+  // Groups repeated keys (checkbox groups such as "work_to_attract[]")
+  // into arrays instead of letting the last checked value win, which is
+  // what Object.fromEntries(formData.entries()) would otherwise do.
+  const formDataToPayload = (formData) => {
+    const payload = {};
 
-    fetch("/api/notify", {
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      keepalive: true,
-      method: "POST",
-    }).catch((error) => {
-      console.error("WhatsApp notification failed", error);
-    });
+    for (const [key, value] of formData.entries()) {
+      if (key in payload) {
+        if (Array.isArray(payload[key])) {
+          payload[key].push(value);
+        } else {
+          payload[key] = [payload[key], value];
+        }
+      } else {
+        payload[key] = value;
+      }
+    }
+
+    return payload;
   };
 
   form.addEventListener("focusin", startTurnstile, { once: true });
@@ -390,9 +396,10 @@ if (form) {
     try {
       const formData = new FormData(form);
       const response = await fetch(formAction, {
-        body: formData,
+        body: JSON.stringify(formDataToPayload(formData)),
         headers: {
           Accept: "application/json",
+          "Content-Type": "application/json",
         },
         method: formMethod,
       });
@@ -403,7 +410,6 @@ if (form) {
         throw new Error(errorMessage);
       }
 
-      notifyWhatsApp(formData);
       window.location.assign(successUrl);
     } catch (error) {
       console.error("Form submission error", error);
