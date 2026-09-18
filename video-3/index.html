@@ -29,6 +29,8 @@
     <link rel="preload" as="image" href="assets/img/hero-poster.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
     <script>
+      document.documentElement.classList.add("js");
+
       // Every load gets the black-screen intro. Decided before paint so the
       // hero chrome never flashes in front of it.
       (function () {
@@ -54,6 +56,8 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
 
     <div class="intro" data-intro aria-hidden="true">
       <p class="intro__name">
@@ -135,12 +139,15 @@
       </section>
 
       <section class="section work" id="work" aria-labelledby="work-title">
-        <div class="section__head">
+        <div class="section__head reveal">
           <div class="meta-row">
             <p class="meta">Selected work · 01–06</p>
             <p class="meta">Click any project to play</p>
           </div>
-          <h2 class="display display--xl" id="work-title">Shot to be<br />looked at twice.</h2>
+          <h2 class="display display--xl lines" id="work-title">
+            <span class="line"><span>Shot to be</span></span>
+            <span class="line"><span>looked at twice.</span></span>
+          </h2>
           <div class="filters" role="group" aria-label="Filter projects">
             <button class="chip chip--strong" type="button" data-filter="all" aria-pressed="true">
               All
@@ -160,7 +167,7 @@
           </div>
         </div>
 
-        <ul class="work-grid" data-work-grid>
+        <ul class="work-grid stagger" data-work-grid>
           <li class="work-card" data-cat="social">
             <a class="work-card__link" href="#contact">
               <span class="work-card__frame">
@@ -176,6 +183,7 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" /></svg>
                   Social-first
                 </span>
+                <span class="work-card__focus" aria-hidden="true"></span>
               </span>
               <span class="work-card__caption">
                 <span class="work-card__name">Tariq × BaByliss PRO</span>
@@ -195,6 +203,7 @@
                   decoding="async"
                 />
                 <span class="work-card__tag">Photography</span>
+                <span class="work-card__focus" aria-hidden="true"></span>
               </span>
               <span class="work-card__caption">
                 <span class="work-card__name">wickk</span>
@@ -217,6 +226,7 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" /></svg>
                   Social-first
                 </span>
+                <span class="work-card__focus" aria-hidden="true"></span>
               </span>
               <span class="work-card__caption">
                 <span class="work-card__name">Coppa Club, Cardiff Townhouse</span>
@@ -239,6 +249,7 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" /></svg>
                   Long-form
                 </span>
+                <span class="work-card__focus" aria-hidden="true"></span>
               </span>
               <span class="work-card__caption">
                 <span class="work-card__name">La Série Cirque</span>
@@ -258,6 +269,7 @@
                   decoding="async"
                 />
                 <span class="work-card__tag">Portrait</span>
+                <span class="work-card__focus" aria-hidden="true"></span>
               </span>
               <span class="work-card__caption">
                 <span class="work-card__name">Studio session</span>
@@ -280,6 +292,7 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" /></svg>
                   Long-form
                 </span>
+                <span class="work-card__focus" aria-hidden="true"></span>
               </span>
               <span class="work-card__caption">
                 <span class="work-card__name">New York</span>
@@ -293,7 +306,7 @@
 
       <section class="section about" id="about" aria-labelledby="about-title">
         <img
-          class="about__photo"
+          class="about__photo reveal reveal--wipe"
           src="assets/img/about-harrison.jpg"
           alt="Harrison Wills standing by a window over the city at night"
           width="480"
@@ -301,7 +314,7 @@
           loading="lazy"
           decoding="async"
         />
-        <div class="about__body">
+        <div class="about__body reveal">
           <ul class="chips" aria-label="Disciplines">
             <li class="chip">About</li>
             <li class="chip">Photography &amp; Design</li>
@@ -336,8 +349,8 @@
       </section>
 
       <section class="section services" id="services" aria-labelledby="services-title">
-        <h2 class="meta" id="services-title">Services</h2>
-        <ol class="services__list">
+        <h2 class="meta reveal" id="services-title">Services</h2>
+        <ol class="services__list stagger">
           <li class="service">
             <span class="service__index" aria-hidden="true">01</span>
             <h3 class="service__name display display--s">Commercial &amp; product video</h3>
@@ -366,8 +379,8 @@
       </section>
 
       <section class="section clients" aria-labelledby="clients-title">
-        <h2 class="meta" id="clients-title">Clients</h2>
-        <ul class="clients__list">
+        <h2 class="meta reveal" id="clients-title">Clients</h2>
+        <ul class="clients__list stagger">
           <li class="client">Tariq</li>
           <li class="client">BaByliss PRO</li>
           <li class="client">Coppa Club</li>
@@ -379,7 +392,7 @@
       </section>
 
       <section class="section instagram" aria-labelledby="instagram-title">
-        <div class="meta-row">
+        <div class="meta-row reveal">
           <h2 class="meta" id="instagram-title">Latest on Instagram</h2>
           <a
             class="meta-link"
@@ -391,7 +404,7 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" /></svg>
           </a>
         </div>
-        <ul class="ig-grid">
+        <ul class="ig-grid stagger">
           <li><a href="https://www.instagram.com/harrisontwills/" target="_blank" rel="noopener noreferrer"><img src="assets/img/ig-01.jpg" alt="Instagram post 1" width="340" height="340" loading="lazy" decoding="async" /></a></li>
           <li><a href="https://www.instagram.com/harrisontwills/" target="_blank" rel="noopener noreferrer"><img src="assets/img/ig-02.jpg" alt="Instagram post 2" width="340" height="340" loading="lazy" decoding="async" /></a></li>
           <li><a href="https://www.instagram.com/harrisontwills/" target="_blank" rel="noopener noreferrer"><img src="assets/img/ig-03.jpg" alt="Instagram post 3" width="317" height="317" loading="lazy" decoding="async" /></a></li>
@@ -408,9 +421,12 @@
       </section>
 
       <section class="section contact" id="contact" aria-labelledby="contact-title">
-        <div class="contact__intro">
+        <div class="contact__intro reveal">
           <p class="meta">Contact</p>
-          <h2 class="display display--l" id="contact-title">Got a shoot<br />in mind?</h2>
+          <h2 class="display display--l lines" id="contact-title">
+            <span class="line"><span>Got a shoot</span></span>
+            <span class="line"><span>in mind?</span></span>
+          </h2>
           <p class="contact__lede">
             Tell Harrison what you are making and where. He replies on WhatsApp, usually the same
             day.
@@ -440,7 +456,7 @@
         </div>
 
         <form
-          class="form"
+          class="form stagger"
           action="https://wa.me/447700900123"
           method="get"
           target="_blank"

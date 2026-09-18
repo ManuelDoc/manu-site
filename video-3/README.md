@@ -24,12 +24,46 @@ no runtime.
   is `preload="none"`, starts when idle and is skipped under reduced motion
   or Data Saver; the poster carries the hero on its own.
 
+## Motion
+
+Two engines produce the same result, chosen per browser:
+
+1. **Scroll-driven CSS.** `animation-timeline: view()` on the reveals, and
+   `scroll(root)` on the progress bar. The compositor runs these, so they cost
+   no main-thread work and track the scrollbar exactly. Chrome, Edge and
+   Safari 18+ (~84% of users in 2026).
+2. **IntersectionObserver fallback,** gated behind `@supports not
+   (animation-timeline: view())`. Mainly Firefox stable, which still keeps the
+   feature behind a flag.
+
+Scroll timelines ignore `animation-delay`, so stagger is done by offsetting
+each item's `animation-range` instead. The fallback uses `transition-delay`
+with a `--i` index set in JS.
+
+What animates, and why:
+
+| Element | Motion |
+| --- | --- |
+| Hero loop | Drifts up as the section exits, for depth on the first scroll. Scoped to `html:not(.is-intro)` so it never fights the intro's scale-up |
+| Progress bar | A hairline of accent across the top, tied to document scroll |
+| Headings | Each line wipes up from behind its own mask, so type arrives as a block instead of fading |
+| Work cards | The frame opens from the bottom while the picture settles out of an over-scaled, desaturated state: a print coming up in the tray |
+| About photo | Same wipe, slower |
+| Services, clients, Instagram, form | Staggered rise or pop |
+| Hover | Focus brackets on card frames, underline on the card name, accent rule drawing across a service row |
+
+The hidden starting state is gated behind a `.js` class set before paint, so
+with scripting off everything renders in its final position. Everything sits
+inside `prefers-reduced-motion: no-preference`, and the reduced-motion block
+clears every transform, filter and clip-path.
+
 ## Files
 
 - `index.html` — single page: hero, work grid with filters, about, services,
   clients, Instagram grid, contact, footer
 - `styles.css` — all styling, no framework
-- `site.js` — intro, hero loop, timecode, work filters and the WhatsApp form (composes a pre-filled
+- `site.js` — intro, hero loop, timecode, the fallback reveal engine, work
+  filters and the WhatsApp form (composes a pre-filled
   `wa.me` message from the fields; without JS the form still opens WhatsApp)
 - `assets/img/` — hero poster, six work stills, about portrait, twelve
   Instagram tiles, grain tile

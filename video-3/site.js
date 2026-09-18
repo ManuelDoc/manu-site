@@ -136,6 +136,78 @@
     }
   }
 
+  /* ------------------------------------------------------------- motion
+
+     The stylesheet does all of this natively where `animation-timeline` is
+     supported. What follows only runs in the browsers that are still
+     missing it, so nothing here duplicates work the compositor is already
+     doing. */
+
+  const nativeScrollTimeline =
+    window.CSS &&
+    CSS.supports &&
+    CSS.supports("animation-timeline", "view()");
+
+  if (!reducedMotion && !nativeScrollTimeline) {
+    // Index each child so the stylesheet can stagger it with a delay.
+    document.querySelectorAll(".stagger").forEach((group) => {
+      Array.from(group.children).forEach((child, i) => {
+        child.style.setProperty("--i", String(i));
+      });
+    });
+
+    const targets = document.querySelectorAll(".reveal, .stagger, .lines");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.12 }
+      );
+
+      targets.forEach((el) => observer.observe(el));
+    } else {
+      targets.forEach((el) => el.classList.add("is-in"));
+    }
+
+    // Scroll progress, rounded to whole percent so it only writes to the
+    // style when the bar would actually move.
+    const bar = document.querySelector(".progress__bar");
+
+    if (bar) {
+      let last = -1;
+      let ticking = false;
+
+      const paint = () => {
+        ticking = false;
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = max > 0 ? Math.round((window.scrollY / max) * 100) : 0;
+
+        if (pct !== last) {
+          last = pct;
+          bar.style.transform = "scaleX(" + pct / 100 + ")";
+        }
+      };
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(paint);
+        },
+        { passive: true }
+      );
+
+      paint();
+    }
+  }
+
   /* ------------------------------------------------------------ filters */
 
   const grid = document.querySelector("[data-work-grid]");
