@@ -393,12 +393,6 @@ button {
   background: var(--ink-3);
 }
 
-.btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -428,7 +422,10 @@ button {
   inset: 0 0 auto;
   z-index: 90;
   padding-block: clamp(0.85rem, 2vw, 1.35rem);
-  transition: background-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+  transition:
+    background-color 0.35s var(--ease),
+    backdrop-filter 0.35s var(--ease),
+    opacity 0.9s var(--ease);
 }
 
 .site-header::after {
@@ -523,14 +520,8 @@ button {
   color: #fff;
 }
 
-.site-nav__links {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.1rem);
-}
-
 .nav-toggle {
-  display: none;
+  display: inline-flex;
   padding: 0.62rem 1rem;
   border: 1px solid var(--edge-dark);
   border-radius: 999px;
@@ -540,20 +531,6 @@ button {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--on-dark);
-}
-
-@media (max-width: 60rem) {
-  .site-nav__links {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-  }
-
-  .site-nav .btn--flare {
-    display: none;
-  }
 }
 
 /* Mobile menu */
@@ -622,12 +599,6 @@ button {
   text-align: center;
 }
 
-@media (min-width: 60.001rem) {
-  .mobile-nav {
-    display: none !important;
-  }
-}
-
 /* --------------------------------------------------------------------------
    8. Hero
    -------------------------------------------------------------------------- */
@@ -663,8 +634,8 @@ button {
   z-index: -2;
   background: linear-gradient(
     180deg,
-    rgba(11, 11, 12, 0.72) 0%,
-    rgba(11, 11, 12, 0.2) 32%,
+    rgba(11, 11, 12, 0.74) 0%,
+    rgba(11, 11, 12, 0.26) 34%,
     rgba(11, 11, 12, 0.9) 86%
   );
 }
@@ -673,8 +644,8 @@ button {
 @media (min-width: 62rem) {
   .hero__scrim {
     background:
-      linear-gradient(180deg, rgba(11, 11, 12, 0.78) 0%, rgba(11, 11, 12, 0.25) 34%, rgba(11, 11, 12, 0.92) 88%),
-      linear-gradient(80deg, rgba(11, 11, 12, 0.85) 0%, rgba(11, 11, 12, 0) 62%);
+      linear-gradient(180deg, rgba(11, 11, 12, 0.76) 0%, rgba(11, 11, 12, 0.22) 34%, rgba(11, 11, 12, 0.92) 88%),
+      linear-gradient(80deg, rgba(11, 11, 12, 0.62) 0%, rgba(11, 11, 12, 0.24) 28%, rgba(11, 11, 12, 0) 52%);
   }
 }
 
@@ -769,21 +740,25 @@ button {
   }
 }
 
-.hero__title {
-  margin-bottom: clamp(1.2rem, 3vw, 1.9rem);
+.hero__roles {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--on-dark);
 }
 
-.hero__title .line {
+.hero__role {
   display: block;
 }
 
-.hero__title .line--flare {
-  color: var(--flare);
-}
-
-.hero__lede {
-  margin-bottom: clamp(1.7rem, 4vw, 2.4rem);
-  color: rgba(241, 237, 230, 0.74);
+.hero__role + .hero__role {
+  color: var(--on-dark-soft);
 }
 
 .hero__specs {
@@ -833,6 +808,127 @@ button {
   right: calc(var(--gutter) - 12px);
   border-left: 0;
   border-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8b. First-load intro
+
+   Black screen, the name eases in, then the hero video itself — not a still —
+   fades in small and scales up until it fills the viewport. Nothing here is
+   duplicated: the real .hero__media is lifted out of the hero for the
+   duration, so the loop that grows is the one that keeps playing afterwards.
+   -------------------------------------------------------------------------- */
+
+.intro {
+  display: none;
+}
+
+html.is-intro {
+  overflow: hidden;
+}
+
+html.is-intro .intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  background: var(--ink);
+}
+
+.intro__name {
+  margin: 0;
+  display: grid;
+  gap: 0.05em;
+  text-align: center;
+  font-weight: 800;
+  font-stretch: 90%;
+  font-size: clamp(2.2rem, 9.5vw, 6rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--on-dark);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+
+.intro__name span {
+  display: block;
+  opacity: 0;
+  transform: translateY(0.45em);
+  filter: blur(12px);
+  transition:
+    opacity 1s var(--ease-out),
+    transform 1s var(--ease-out),
+    filter 1s var(--ease-out);
+}
+
+.intro.is-name span {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.intro.is-name span:nth-child(2) {
+  transition-delay: 0.14s;
+}
+
+.intro.is-name-out .intro__name {
+  opacity: 0;
+  transform: translateY(-0.16em);
+  visibility: hidden;
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease),
+    visibility 0s linear 0.55s;
+}
+
+/* .hero isolates, so it has to be raised as a whole for the media inside it
+   to paint above the black sheet. */
+html.is-intro .hero {
+  z-index: 210;
+}
+
+html.is-intro .hero__media {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  overflow: hidden;
+  border-radius: 56px;
+  opacity: 0;
+  transform: scale(0.18);
+  will-change: transform;
+  transition:
+    opacity 0.7s var(--ease),
+    transform 1.4s var(--ease-out),
+    border-radius 1.4s var(--ease-out);
+}
+
+html.is-frame .hero__media {
+  opacity: 1;
+}
+
+html.is-expand .hero__media {
+  transform: scale(1);
+  border-radius: 0;
+}
+
+/* Everything else waits behind the black and fades up once the video lands. */
+html.is-intro .hero__scrim,
+html.is-intro .grain,
+html.is-intro .site-header,
+html.is-intro .hero__hud,
+html.is-intro .hero__body,
+html.is-intro .hero__corner {
+  opacity: 0;
+}
+
+.hero__scrim,
+.grain,
+.hero__hud,
+.hero__body,
+.hero__corner {
+  transition: opacity 0.9s var(--ease);
 }
 
 /* --------------------------------------------------------------------------

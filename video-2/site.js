@@ -10,6 +10,55 @@
   const finePointer =
     window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+  /* ----------------------------------------------------------------- intro */
+
+  // The <head> decides whether the intro runs (first load of the session, no
+  // reduced-motion); this only plays it out and hands the page back.
+  const root = document.documentElement;
+
+  if (root.classList.contains("is-intro")) {
+    const intro = document.querySelector("[data-intro]");
+    const introVideo = document.querySelector("[data-hero-video]");
+
+    if (!intro || !introVideo) {
+      root.classList.remove("is-intro");
+    } else {
+      // The frame has to be live before it is shown, so this one skips the
+      // idle-time politeness the decorative loop gets below.
+      introVideo.preload = "auto";
+
+      const played = introVideo.play();
+
+      if (played && typeof played.catch === "function") {
+        // Refused autoplay just means the poster grows instead. Still works.
+        played.catch(() => {});
+      }
+
+      const at = (delay, fn) => window.setTimeout(fn, delay);
+
+      at(120, () => intro.classList.add("is-name"));
+      at(2000, () => intro.classList.add("is-name-out"));
+      at(2450, () => root.classList.add("is-frame"));
+      at(3100, () => root.classList.add("is-expand"));
+      at(4550, () => {
+        // A reload keeps the scroll position the browser restored, and it is
+        // only invisible while the intro covers the page — so the page has to
+        // land back at the top in the same frame that scrolling is unlocked.
+        // Order matters: overflow:hidden makes scrollTo a no-op.
+        // "instant" because the page scrolls smoothly by default, and the
+        // trip back up would be visible.
+        root.classList.remove("is-intro", "is-frame", "is-expand");
+        window.scrollTo({ top: 0, behavior: "instant" });
+
+        // Back/forward navigation gets its scroll position back as usual; a
+        // reload re-runs the head script and switches this off again.
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "auto";
+        }
+      });
+    }
+  }
+
   /* ---------------------------------------------------------------- header */
 
   const header = document.querySelector("[data-header]");
