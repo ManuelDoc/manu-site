@@ -19,18 +19,48 @@
       property="og:description"
       content="Photo, video and social-first content for brands that need a steady stream of all three."
     />
-    <meta property="og:image" content="assets/img/hero-katz.jpg" />
+    <meta property="og:image" content="assets/img/hero-poster.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Anybody:ital,wdth,wght@0,100..150,800..900;1,100..150,800..900&family=Chivo:wght@400;500;700&family=Azeret+Mono:wght@400;500&display=swap"
     />
-    <link rel="preload" as="image" href="assets/img/hero-katz.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/img/hero-poster.jpg" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
+    <script>
+      // Every load gets the black-screen intro. Decided before paint so the
+      // hero chrome never flashes in front of it.
+      (function () {
+        var reduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (!reduced) {
+          if ("scrollRestoration" in history) {
+            history.scrollRestoration = "manual";
+          }
+
+          document.documentElement.classList.add("is-intro");
+          // Failsafe: never leave the page stuck on black if site.js dies.
+          window.setTimeout(function () {
+            if (!document.documentElement.classList.contains("is-intro")) return;
+            document.documentElement.classList.remove("is-intro");
+            window.scrollTo({ top: 0, behavior: "instant" });
+          }, 8000);
+        }
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="intro" data-intro aria-hidden="true">
+      <p class="intro__name">
+        <span>Harrison</span>
+        <span>Wills</span>
+      </p>
+    </div>
 
     <header class="site-header" id="top">
       <a class="wordmark wordmark--nav" href="#top">Harrison Wills</a>
@@ -51,17 +81,29 @@
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
-        <img
-          class="hero__image"
-          src="assets/img/hero-katz.jpg"
-          alt="Frame from the showreel: Katz's Delicatessen neon sign at night, New York"
-          width="1440"
-          height="810"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="hero__grain" aria-hidden="true"></div>
+        <div class="hero__media">
+          <video
+            data-hero-video
+            src="assets/video/hero-loop.mp4"
+            poster="assets/img/hero-poster.jpg"
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-hidden="true"
+            tabindex="-1"
+          ></video>
+        </div>
         <div class="hero__scrim" aria-hidden="true"></div>
+        <div class="hero__grain" aria-hidden="true"></div>
+
+        <div class="hero__hud" aria-hidden="true">
+          <span class="hero__rec">Rec</span>
+          <span data-timecode>00:00:00:00</span>
+          <span>A-CAM · 4K · 24FPS</span>
+        </div>
+        <span class="hero__corner hero__corner--tl" aria-hidden="true"></span>
+        <span class="hero__corner hero__corner--br" aria-hidden="true"></span>
 
         <div class="hero__title">
           <h1 class="wordmark wordmark--hero" id="hero-title">Harrison Wills</h1>

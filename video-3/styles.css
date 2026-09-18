@@ -11,7 +11,12 @@
   --muted: #9aa5b1;
   --line: #26303b;
   --line-strong: #5c6873;
-  --accent: #4fd1e8;
+  --accent: #e9b949;
+  --accent-soft: #f3cf6f;
+  --accent-grain: url("assets/img/grain.png");
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   --display: "Anybody", Impact, "Arial Black", sans-serif;
   --body: "Chivo", Helvetica, Arial, sans-serif;
@@ -78,7 +83,7 @@ a:hover {
   position: absolute;
   top: -100%;
   left: var(--gutter);
-  z-index: 100;
+  z-index: 300;
   padding: 0.6rem 1rem;
   background: var(--accent);
   color: var(--bg);
@@ -262,12 +267,13 @@ button.chip:hover {
 }
 
 .btn--accent {
-  background: var(--accent);
+  background: var(--accent-grain) center / 128px 128px repeat, var(--accent);
+  background-blend-mode: soft-light;
   color: var(--bg);
 }
 
 .btn--accent:hover {
-  background: #7ee0f1;
+  background-color: var(--accent-soft);
   color: var(--bg);
 }
 
@@ -334,47 +340,147 @@ button.chip:hover {
 
 .hero {
   position: relative;
-  min-height: min(56.25rem, 100svh);
-  padding: 7rem var(--gutter) 3.5rem;
+  min-height: 100svh;
+  padding: clamp(6.5rem, 12vw, 7.5rem) var(--gutter) clamp(2rem, 5vw, 3.5rem);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 3rem;
   overflow: hidden;
+  isolation: isolate;
   background: var(--surface);
 }
 
-.hero__image {
+.hero__media {
   position: absolute;
   inset: 0;
+  z-index: -3;
+}
+
+.hero__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero__grain {
+.hero__scrim {
   position: absolute;
   inset: 0;
-  opacity: 0.22;
+  z-index: -2;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 20, 0.85) 0%,
+    rgba(11, 15, 20, 0.8) 24%,
+    rgba(11, 15, 20, 0.1) 44%,
+    rgba(11, 15, 20, 0.1) 56%,
+    rgba(11, 15, 20, 0.85) 78%,
+    rgba(11, 15, 20, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+.hero__grain {
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  opacity: 0.28;
   mix-blend-mode: overlay;
   background: url("assets/img/grain.png") repeat;
   background-size: 256px 256px;
   pointer-events: none;
+  animation: grain-shift 0.9s steps(4) infinite;
 }
 
-.hero__scrim {
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-3%, 2%);
+  }
+  50% {
+    transform: translate(2%, -3%);
+  }
+  75% {
+    transform: translate(-2%, -2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.hero__hud {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(11, 15, 20, 0.85) 0%,
-    rgba(11, 15, 20, 0.85) 26%,
-    rgba(11, 15, 20, 0) 42%,
-    rgba(11, 15, 20, 0) 58%,
-    rgba(11, 15, 20, 0.85) 78%,
-    rgba(11, 15, 20, 0.9) 100%
-  );
+  top: 5.5rem;
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero__hud span:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 46rem) {
+  .hero__hud span:last-child {
+    display: none;
+  }
+}
+
+.hero__rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink);
+}
+
+.hero__rec::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.6s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.hero__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(232, 236, 240, 0.34);
   pointer-events: none;
+}
+
+.hero__corner--tl {
+  top: calc(5.5rem + 1.6rem);
+  left: calc(var(--gutter) - 14px);
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.hero__corner--br {
+  bottom: clamp(1.4rem, 4vw, 2.6rem);
+  right: calc(var(--gutter) - 12px);
+  border-left: 0;
+  border-top: 0;
 }
 
 .hero__title,
@@ -452,6 +558,129 @@ button.chip:hover {
     align-items: flex-start;
     gap: 1.5rem;
   }
+}
+
+/* ---------------------------------------------------- first-load intro
+   Black screen, the name eases in, then the hero loop itself fades in small
+   and scales up until it fills the viewport. The real .hero__media is lifted
+   out of the hero for the duration, so the loop that grows is the one that
+   keeps playing afterwards. Any scroll or key press skips it. */
+
+.intro {
+  display: none;
+}
+
+html.is-intro {
+  overflow: hidden;
+}
+
+html.is-intro .intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  background: var(--bg);
+}
+
+.intro__name {
+  margin: 0;
+  display: grid;
+  gap: 0.05em;
+  text-align: center;
+  font-family: var(--display);
+  font-stretch: 150%;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(2.2rem, 9.5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+
+.intro__name span {
+  display: block;
+  opacity: 0;
+  transform: translateY(0.45em);
+  filter: blur(12px);
+  background: var(--wordmark-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition:
+    opacity 1s var(--ease-out),
+    transform 1s var(--ease-out),
+    filter 1s var(--ease-out);
+}
+
+.intro.is-name span {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.intro.is-name span:nth-child(2) {
+  transition-delay: 0.14s;
+}
+
+.intro.is-name-out .intro__name {
+  opacity: 0;
+  transform: translateY(-0.16em);
+  visibility: hidden;
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease),
+    visibility 0s linear 0.55s;
+}
+
+html.is-intro .hero {
+  z-index: 210;
+}
+
+html.is-intro .hero__media {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  overflow: hidden;
+  border-radius: 56px;
+  opacity: 0;
+  transform: scale(0.18);
+  will-change: transform;
+  transition:
+    opacity 0.7s var(--ease),
+    transform 1.4s var(--ease-out),
+    border-radius 1.4s var(--ease-out);
+}
+
+html.is-frame .hero__media {
+  opacity: 1;
+}
+
+html.is-expand .hero__media {
+  transform: scale(1);
+  border-radius: 0;
+}
+
+html.is-intro .hero__scrim,
+html.is-intro .hero__grain,
+html.is-intro .site-header,
+html.is-intro .hero__hud,
+html.is-intro .hero__title,
+html.is-intro .hero__foot,
+html.is-intro .hero__corner {
+  opacity: 0;
+}
+
+.hero__scrim,
+.hero__grain,
+.site-header,
+.hero__hud,
+.hero__title,
+.hero__foot,
+.hero__corner {
+  transition: opacity 0.9s var(--ease);
 }
 
 /* ----------------------------------------------------------- sections */
@@ -929,5 +1158,6 @@ button.chip:hover {
   *::before,
   *::after {
     transition: none !important;
+    animation: none !important;
   }
 }
