@@ -34,13 +34,13 @@
         played.catch(() => {});
       }
 
-      const at = (delay, fn) => window.setTimeout(fn, delay);
+      const timers = [];
+      const at = (delay, fn) => timers.push(window.setTimeout(fn, delay));
 
-      at(120, () => intro.classList.add("is-name"));
-      at(2000, () => intro.classList.add("is-name-out"));
-      at(2450, () => root.classList.add("is-frame"));
-      at(3100, () => root.classList.add("is-expand"));
-      at(4550, () => {
+      const finish = () => {
+        timers.forEach(window.clearTimeout);
+        skipEvents.forEach((type) => window.removeEventListener(type, finish));
+
         // A reload keeps the scroll position the browser restored, and it is
         // only invisible while the intro covers the page — so the page has to
         // land back at the top in the same frame that scrolling is unlocked.
@@ -55,7 +55,19 @@
         if ("scrollRestoration" in history) {
           history.scrollRestoration = "auto";
         }
-      });
+      };
+
+      // Anyone trying to scroll or key through the intro gets the page now.
+      const skipEvents = ["wheel", "touchmove", "keydown"];
+      skipEvents.forEach((type) =>
+        window.addEventListener(type, finish, { passive: true })
+      );
+
+      at(120, () => intro.classList.add("is-name"));
+      at(2000, () => intro.classList.add("is-name-out"));
+      at(2450, () => root.classList.add("is-frame"));
+      at(3100, () => root.classList.add("is-expand"));
+      at(4550, finish);
     }
   }
 

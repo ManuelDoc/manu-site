@@ -53,6 +53,7 @@
           document.documentElement.classList.add("is-intro");
           // Failsafe: never leave the page stuck on black if site.js dies.
           window.setTimeout(function () {
+            if (!document.documentElement.classList.contains("is-intro")) return;
             document.documentElement.classList.remove("is-intro");
             window.scrollTo({ top: 0, behavior: "instant" });
           }, 8000);
@@ -1071,6 +1072,6 @@
       </div>
     </footer>
 
-    <script src="site.js?v=20260918-11" defer></script>
+    <script src="site.js?v=20260918-12" defer></script>
   </body>
 </html>
