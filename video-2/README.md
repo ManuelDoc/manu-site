@@ -14,7 +14,7 @@ Built directly from Harrison's questionnaire answers:
 | Commercial, fashion, lifestyle, hospitality, product, social-first, photography | Exactly these seven in the marquee and the six services; no wedding, beauty or music language |
 | "Simple selected work page" | One flat grid of six projects with light category filters — no nested category trees |
 | Instagram only, "full feed if it stays lightweight" | A six-tile grid fetched lazily from Behold; no embed widget, no third-party script |
-| Contact via Instagram DM and WhatsApp | WhatsApp is the primary CTA in the header, hero, contact block, every case study and the mobile dock. The form is the fallback |
+| Contact via Instagram DM and WhatsApp | WhatsApp is the primary CTA in the header, hero, contact block and every case study. The form is the fallback |
 | Wants Name, Email, Phone, Company/brand | Those four, plus "What are you looking to create?" and "Tell me about your project" |
 
 Reference for tone was mustardmitt.com — same confidence and scale of type, but
