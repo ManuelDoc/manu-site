@@ -11,7 +11,8 @@ This repo has no build step, linter, or test suite. Follow this checklist for an
 
 Decide which surface is affected:
 
-- **Main site**: `index.html` + `styles.css` (also shared by `thank-you.html` and `404.html`).
+- **Main site**: `index.html` + `styles.css` (also shared by `thank-you.html`, `404.html` and `es/`). Content changes usually need mirroring in `es/`.
+- **Theme toggle**: `theme.js` (+ inline snippet in `<head>`). Check both light and dark.
 - **Hero rotator**: `hero.js` (uses local `assets/vendor/gsap.min.js`).
 - **Contact form**: the `#contact-form` markup in `index.html` plus `script.js`.
 - **Scroll reveal**: `scroll-reveal.js`.
@@ -26,7 +27,9 @@ Read the full contents of every file in scope, plus `AGENTS.md` and `CLAUDE.md` 
 - 2-space indentation; BEM-like classes (`block`, `block__element`, `block--modifier`).
 - Code and identifiers in English; visible copy in British English.
 - No new dependencies, frameworks, build tools, or external scripts.
-- If touching the contact form: keep the Formspree action, `_gotcha` honeypot, `thank-you.html` redirect, and the Turnstile-after-interaction / disabled-until-verified behaviour intact.
+- If touching the contact form: keep `action="/api/notify"` (never switch back to Formspree), `_gotcha` honeypot, `thank-you.html` redirect, and the Turnstile-after-interaction / disabled-until-verified behaviour intact.
+- If you replace a CSS/JS/image/video file under the same name, bump its `?v=YYYYMMDD-NN` in every HTML that references it.
+- New public pages get the Cloudflare Web Analytics snippet from `index.html`.
 - If touching the hero: keep the non-JS/no-motion fallback readable (plain text words still present in the DOM).
 - If scaffolding a new microsite: lowercase folder name, self-contained `index.html` + `styles.css` (+ `assets/` if needed), relative paths only, add
   ```html
@@ -50,7 +53,7 @@ Suggest to the user, or perform if possible:
 - Open the changed HTML file(s) directly in a browser and click through the change.
 - If the contact form was touched, submit a test enquiry and confirm the `thank-you.html` redirect.
 - Toggle "reduce motion" in OS settings (or devtools emulation) and re-check the page.
-- Resize to a mobile width and check layout/tap targets.
+- Resize to a mobile width (390×844) and check layout/tap targets, in light and dark theme. Do not say "done" on a visual change you have not looked at.
 
 ## 6. Wrap up
 

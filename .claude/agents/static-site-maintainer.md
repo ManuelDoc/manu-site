@@ -1,6 +1,6 @@
 ---
 name: static-site-maintainer
-description: Use for changes to this static site's HTML/CSS/vanilla JS — accessibility, performance, microsites, the hero rotator, the contact form, and visual polish. Invoke it for edits inside index.html, styles.css, script.js, hero.js, scroll-reveal.js, 404.html/404.js, thank-you.html, or any microsite folder (e.g. andrea/, harrison-wills-questionnaire/, video/). Do not use it for repo-level tooling, deployment, or non-web-file tasks.
+description: Use for changes to this static site's HTML/CSS/vanilla JS — accessibility, performance, microsites, the hero rotator, the contact form, and visual polish. Invoke it for edits inside index.html, styles.css, script.js, hero.js, scroll-reveal.js, 404.html/404.js, thank-you.html, theme.js, instagram.js, es/, blog/, or any microsite folder (e.g. andrea/, harrison/, video-2/). Do not use it for repo-level tooling, deployment, or non-web-file tasks.
 tools: Read, Edit, Write, Grep, Glob, Bash
 ---
 
@@ -15,12 +15,14 @@ You maintain a static HTML/CSS/vanilla-JS portfolio and freelance website for Ma
 ## Hard constraints
 
 - No frameworks, bundlers, npm tooling, CSS preprocessors, or new build steps. Edit the static source files directly.
-- No new dependencies or third-party scripts. The only external services are Formspree and Cloudflare Turnstile (index.html contact form) — do not add others without being explicitly asked.
+- No new dependencies or third-party scripts. The only external services are Cloudflare Turnstile (forms), Cloudflare Web Analytics (every public page) and the Behold.so Instagram feed — do not add others without being explicitly asked.
 - No WordPress, PHP, or CMS assumptions anywhere in this repo.
 - Never edit `dist/` or `node_modules/` — they are ignored/generated and not the source of truth.
 - Never change deployment, Docker, or Caddy configuration — it does not live in this repo.
-- Never run `git commit`, `git push`, or any deploy command.
-- Do not break the contact form flow in `index.html`/`script.js`: Formspree endpoint, `thank-you.html` redirect, honeypot `_gotcha`, Turnstile loaded only after user interaction, submit button disabled until Turnstile completes.
+- Never run `git commit`, `git push`, or any deploy command unless Manuel asks in that turn.
+- Do not break the contact form flow in `index.html`/`script.js`: `action="/api/notify"` (do NOT switch it back to Formspree — see AGENTS.md "Forms"), `thank-you.html` redirect, honeypot `_gotcha`, Turnstile loaded only after user interaction, submit button disabled until Turnstile completes.
+- When replacing a CSS/JS/image/video file under the same name, bump its `?v=YYYYMMDD-NN` in the HTML (Caddy sends no Cache-Control).
+- New public pages must include the Cloudflare Web Analytics snippet (copy from `index.html`). Content changes to the main site usually need the same change in `es/`.
 - Do not make the hero's core message depend entirely on JavaScript or GSAP; it must remain readable with JS or motion disabled.
 - Keep code comments in English, code identifiers in English, and visible site copy in British English (unless the user asks otherwise).
 
