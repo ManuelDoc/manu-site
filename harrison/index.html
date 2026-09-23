@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="googlebot" content="noindex, nofollow, noarchive" />
     <meta name="theme-color" content="#f4f4f2" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260922-02" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to wireframe</a>
@@ -21,68 +21,44 @@
       <nav class="site-nav" aria-label="Proposed website navigation">
         <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#instagram">Instagram</a>
         <a href="#contact">Contact</a>
+        <a href="#instagram">Instagram</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="project-note" aria-labelledby="wireframe-title">
-        <div class="shell project-note__grid">
-          <div>
-            <p class="section-label">Website structure · Draft 01</p>
-            <h1 id="wireframe-title">A clear plan for the first version of your website.</h1>
-          </div>
-          <div class="project-note__copy">
-            <p>
-              This is a wireframe, not a visual design. It defines the page order, content and
-              purpose of each section before typography, colour, imagery and motion are chosen.
-            </p>
-            <p class="project-note__flow">
-              Hero <span aria-hidden="true">→</span> Selected work
-              <span aria-hidden="true">→</span> About &amp; capabilities
-              <span aria-hidden="true">→</span> Instagram
-              <span aria-hidden="true">→</span> Contact
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section class="wire-section wire-section--hero" aria-labelledby="hero-heading">
         <div class="shell">
           <div class="wire-section__heading">
             <p class="section-label">01 · Hero</p>
-            <p class="section-purpose">Introduce Harrison and make the quality of the work clear immediately.</p>
           </div>
 
-          <div class="hero-layout">
-            <div class="hero-copy">
-              <p class="placeholder-line placeholder-line--short" aria-hidden="true"></p>
-              <h2 id="hero-heading">Harrison Wills</h2>
-              <p class="hero-copy__role">Photographer, videographer and content creator</p>
-              <p class="hero-copy__summary">
-                A short positioning statement explaining who Harrison works with and the kind of
-                content he creates.
-              </p>
-              <div class="wire-actions" aria-label="Proposed hero actions">
-                <span class="wire-button">View selected work</span>
-                <span class="wire-button wire-button--secondary">Start a project</span>
-              </div>
+          <div class="media-placeholder media-placeholder--hero hero-frame">
+            <div class="hero-frame__hud" aria-hidden="true">
+              <span>Rec</span>
+              <span>00:00:00:00</span>
+              <span>A-Cam · 4K · 24FPS</span>
             </div>
 
-            <div class="media-placeholder media-placeholder--hero">
+            <div class="hero-frame__media">
               <span class="media-placeholder__icon" aria-hidden="true">▶</span>
-              <strong>Hero video or showreel</strong>
-              <span>Short silent loop with a still-image fallback</span>
+              <strong>Full-screen hero video</strong>
+              <span>Silent loop with a still-image fallback</span>
+            </div>
+
+            <div class="hero-frame__content">
+              <h2 class="hero-frame__roles" id="hero-heading">
+                <span>Photography &amp; Design</span>
+                <span>Video &amp; Editor</span>
+              </h2>
+
+              <dl class="hero-frame__specs">
+                <div><dt>Based</dt><dd>Cardiff, UK</dd></div>
+                <div><dt>Shoots</dt><dd>Photo + video</dd></div>
+                <div><dt>Best for</dt><dd>Always-on brands</dd></div>
+              </dl>
             </div>
           </div>
-
-          <aside class="requirements" aria-label="Hero content requirements">
-            <strong>Content needed</strong>
-            <span>Final role/title</span>
-            <span>One-sentence introduction</span>
-            <span>Hero video and fallback image</span>
-          </aside>
         </div>
       </section>
 
@@ -91,12 +67,8 @@
           <div class="wire-section__heading wire-section__heading--split">
             <div>
               <p class="section-label">02 · Selected work</p>
-              <h2 id="work-heading">The strongest work, shown early.</h2>
+              <h2 id="work-heading">Selected work.</h2>
             </div>
-            <p class="section-purpose">
-              Four to six projects give potential clients immediate proof without turning the first
-              version into a large portfolio archive.
-            </p>
           </div>
 
           <div class="project-grid">
@@ -126,21 +98,13 @@
             </article>
           </div>
 
-          <aside class="requirements" aria-label="Selected work content requirements">
-            <strong>Content needed for each project</strong>
-            <span>Project and client name</span>
-            <span>Harrison's role</span>
-            <span>One-line description</span>
-            <span>Approved images or video</span>
-          </aside>
         </div>
       </section>
 
       <section class="wire-section" id="about" aria-labelledby="about-heading">
         <div class="shell">
           <div class="wire-section__heading">
-            <p class="section-label">03 · About &amp; capabilities</p>
-            <p class="section-purpose">Add personality, context and a concise explanation of what Harrison offers.</p>
+            <p class="section-label">03 · About</p>
           </div>
 
           <div class="about-layout">
@@ -166,6 +130,16 @@
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <section class="wire-section" id="services" aria-labelledby="services-heading">
+        <div class="shell">
+          <div class="wire-section__heading">
+            <p class="section-label">04 · Services</p>
+            <h2 id="services-heading">What Harrison can make.</h2>
+          </div>
+
           <div class="capability-grid" aria-label="Proposed services">
             <article>
               <p class="section-label">01</p>
@@ -184,53 +158,55 @@
             </article>
           </div>
 
-          <aside class="requirements" aria-label="About content requirements">
-            <strong>Content needed</strong>
-            <span>Approved biography</span>
-            <span>Portrait or working image</span>
-            <span>Three priority services</span>
-            <span>Approved client names, if included</span>
-          </aside>
         </div>
       </section>
 
-      <section class="wire-section" id="instagram" aria-labelledby="instagram-heading">
+      <section class="wire-section" id="clients" aria-labelledby="clients-heading">
         <div class="shell">
-          <div class="wire-section__heading wire-section__heading--split">
-            <div>
-              <p class="section-label">04 · Instagram</p>
-              <h2 id="instagram-heading">Recent work and updates.</h2>
-            </div>
-            <p class="section-purpose">
-              A lightweight preview supports credibility without making Instagram the main portfolio.
-            </p>
+          <div class="wire-section__heading">
+            <p class="section-label">05 · Clients</p>
+            <h2 id="clients-heading">Trusted by.</h2>
           </div>
 
-          <div class="instagram-grid" aria-label="Six proposed Instagram posts">
-            <div class="media-placeholder"><span>Post 01</span></div>
-            <div class="media-placeholder"><span>Post 02</span></div>
-            <div class="media-placeholder"><span>Post 03</span></div>
-            <div class="media-placeholder"><span>Post 04</span></div>
-            <div class="media-placeholder"><span>Post 05</span></div>
-            <div class="media-placeholder"><span>Post 06</span></div>
+          <div class="logo-row" aria-label="Client logo carousel placeholder">
+            <span>Client logo</span>
+            <span>Client logo</span>
+            <span>Client logo</span>
+            <span>Client logo</span>
+            <span>Client logo</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="wire-section" id="testimonials" aria-labelledby="testimonials-heading">
+        <div class="shell">
+          <div class="wire-section__heading">
+            <p class="section-label">06 · Testimonials</p>
+            <h2 id="testimonials-heading">What clients say.</h2>
           </div>
 
-          <p class="decision-note">
-            <strong>Decision:</strong> use six selected linked posts, or an automatic feed only if it
-            remains lightweight and reliable.
-          </p>
+          <div class="testimonial-grid">
+            <blockquote>
+              <p>“A short client quote about the experience and the work delivered.”</p>
+              <footer>Client name · Brand</footer>
+            </blockquote>
+            <blockquote>
+              <p>“A second short quote, kept focused on the result.”</p>
+              <footer>Client name · Brand</footer>
+            </blockquote>
+            <blockquote>
+              <p>“A final quote from a recognisable client or collaborator.”</p>
+              <footer>Client name · Brand</footer>
+            </blockquote>
+          </div>
         </div>
       </section>
 
       <section class="wire-section wire-section--contact" id="contact" aria-labelledby="contact-heading">
         <div class="shell contact-layout">
           <div class="contact-copy">
-            <p class="section-label">05 · Contact</p>
-            <h2 id="contact-heading">Turn interest into an enquiry.</h2>
-            <p>
-              Direct contact routes remain prominent. The short form collects only the information
-              Harrison said he needs.
-            </p>
+            <p class="section-label">07 · Contact</p>
+            <h2 id="contact-heading">Let’s work together.</h2>
             <div class="contact-routes" aria-label="Proposed direct contact routes">
               <span class="wire-button">WhatsApp</span>
               <span class="wire-button wire-button--secondary">Instagram DM</span>
@@ -261,8 +237,26 @@
               </label>
             </div>
             <button type="button" disabled>Send enquiry</button>
-            <p id="form-note">Wireframe only — this form does not submit.</p>
+            <p id="form-note">Name, email and a short project outline.</p>
           </form>
+        </div>
+      </section>
+
+      <section class="wire-section" id="instagram" aria-labelledby="instagram-heading">
+        <div class="shell">
+          <div class="wire-section__heading">
+            <p class="section-label">08 · Instagram</p>
+            <h2 id="instagram-heading">Recent work and updates.</h2>
+          </div>
+
+          <div class="instagram-grid" aria-label="Six selected Instagram posts">
+            <div class="media-placeholder"><span>Post 01</span></div>
+            <div class="media-placeholder"><span>Post 02</span></div>
+            <div class="media-placeholder"><span>Post 03</span></div>
+            <div class="media-placeholder"><span>Post 04</span></div>
+            <div class="media-placeholder"><span>Post 05</span></div>
+            <div class="media-placeholder"><span>Post 06</span></div>
+          </div>
         </div>
       </section>
     </main>
@@ -282,5 +276,8 @@
         <p class="site-footer__note">Footer · Contact details · Legal information</p>
       </div>
     </footer>
+    <!-- Cloudflare Web Analytics -->
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"6c62da7e822e4ee6a35f24b3ac8400d0"}'></script>
+    <!-- End Cloudflare Web Analytics -->
   </body>
 </html>
