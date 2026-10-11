@@ -1,7 +1,5 @@
-// Light/dark theme toggle. The initial theme is applied by an inline snippet
-// in <head> (before first paint); this script wires up the toggle button.
+// Every page starts dark; light mode is enabled only by the toggle button.
 (() => {
-  const STORAGE_KEY = "theme";
   const root = document.documentElement;
   const THEME_COLORS = { dark: "#08111f", light: "#f7fafd" };
 
@@ -20,7 +18,7 @@
     }
   };
 
-  applyTheme(root.dataset.theme === "light" ? "light" : "dark");
+  applyTheme("dark");
 
   const buttons = document.querySelectorAll("[data-theme-toggle]");
 
@@ -57,12 +55,6 @@
         root.classList.add("theme-transition");
         run();
         window.setTimeout(() => root.classList.remove("theme-transition"), 550);
-      }
-
-      try {
-        window.localStorage.setItem(STORAGE_KEY, next);
-      } catch (error) {
-        /* private mode: theme lasts for this page view only */
       }
     });
   });

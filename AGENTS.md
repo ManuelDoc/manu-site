@@ -62,7 +62,7 @@ Root (main site):
 - `script.js`: contact form logic (Turnstile, submission).
 - `hero.js`: hero word rotator (GSAP).
 - `scroll-reveal.js`: lightweight reveal on scroll for section blocks.
-- `theme.js`: light/dark toggle. The initial theme is set by an inline snippet in `<head>` before first paint; this script only wires the button. Dark `#08111f`, light `#f7fafd`.
+- `theme.js`: light/dark toggle. Every page starts dark via `data-theme="dark"` on `<html>`, regardless of system settings or previously saved preferences. Light mode is enabled only by the button for the current page view; this script wires the button. Dark `#08111f`, light `#f7fafd`.
 - `instagram.js`: self-contained Instagram slider fed by a public Behold.so JSON URL.
 - `thank-you.html`, `404.html` + `404.js`, `favicon.svg`.
 - `assets/`: `vendor/` (GSAP), `decorative/` (pixel-art bots and Manu illustrations), `blog/`, `logo-pixel.svg`.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,16 +11,6 @@
   <link rel="alternate" hreflang="es" href="https://www.manueldocampo.com/es/">
   <link rel="alternate" hreflang="x-default" href="https://www.manueldocampo.com/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script>
-    // Apply saved/system theme before first paint to avoid a flash.
-    try {
-      var t = localStorage.getItem("theme");
-      if (t !== "light" && t !== "dark") {
-        t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-      }
-      document.documentElement.dataset.theme = t;
-    } catch (e) {}
-  </script>
   <link rel="stylesheet" href="styles.css?v=20260810-forms">
 </head>
 <body>
@@ -529,7 +519,7 @@
   <script src="scroll-reveal.js" defer></script>
   <script src="instagram.js?v=20260724-ig2" defer></script>
   <script src="script.js?v=20260810-forms" defer></script>
-  <script src="theme.js" defer></script>
+  <script src="theme.js?v=20261011-01" defer></script>
   <!-- Cloudflare Web Analytics -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"6c62da7e822e4ee6a35f24b3ac8400d0"}'></script>
   <!-- End Cloudflare Web Analytics -->
