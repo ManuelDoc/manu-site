@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Mad Mix Game, edición original de Topo Soft para ZX Spectrum.">
+  <title>Mad Mix Game — ZX Spectrum</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="assets/spectrum-data.js" defer></script>
+  <script src="vendor/jsspeccy/tape.js" defer></script>
+  <script src="engine.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1 class="sr-only">Mad Mix Game para ZX Spectrum</h1>
+    <div id="display" class="display">
+      <canvas id="spectrum" width="320" height="240" tabindex="0" aria-label="Pantalla original de Mad Mix Game" aria-describedby="controls">
+        Tu navegador necesita compatibilidad con Canvas para mostrar el juego.
+      </canvas>
+    </div>
+    <p id="status" role="status">Cargando la cinta de ZX Spectrum…</p>
+    <div class="controls" id="controls" hidden>
+      <div class="toolbar">
+        <button type="button" id="play" aria-label="Enviar la tecla 0 al ZX Spectrum">Tecla 0</button>
+        <button type="button" id="sound" aria-pressed="false">Sonido</button>
+        <button type="button" id="restart">Reiniciar</button>
+        <button type="button" id="fullscreen">Pantalla completa</button>
+      </div>
+      <p>Pulsa cualquier tecla en la portada y en «FASE 1». En el menú, pulsa <kbd>0</kbd> para jugar.</p>
+      <p><kbd>Q</kbd> <kbd>A</kbd> <kbd>O</kbd> <kbd>P</kbd> o flechas para moverte. <kbd>Espacio</kbd> para disparar.</p>
+      <div class="touch" aria-label="Mandos táctiles">
+        <div class="menu-keys" aria-label="Teclas del menú">
+          <button type="button" data-key="Digit1">1</button>
+          <button type="button" data-key="Digit2">2</button>
+          <button type="button" data-key="Digit3">3</button>
+          <button type="button" data-key="Digit4">4</button>
+          <button type="button" data-key="Digit5">5</button>
+          <button type="button" data-key="Digit0">0</button>
+        </div>
+        <div class="joystick">
+          <div class="dpad">
+            <button type="button" data-key="KeyQ" aria-label="Arriba">▲</button>
+            <button type="button" data-key="KeyO" aria-label="Izquierda">◀</button>
+            <button type="button" data-key="KeyA" aria-label="Abajo">▼</button>
+            <button type="button" data-key="KeyP" aria-label="Derecha">▶</button>
+          </div>
+          <button type="button" data-key="Space">Fuego</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Cloudflare Web Analytics -->
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"6c62da7e822e4ee6a35f24b3ac8400d0"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
